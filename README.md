@@ -1,35 +1,90 @@
-# CharteForge — Générateur automatique de chartes graphiques PDF & Design Tokens
+# CharteForge
 
-Application web SaaS permettant à toute marque ou agence d'importer son logo, ses polices et ses couleurs pour générer un brand book complet en PDF (via Playwright Chromium headless) ainsi que ses design tokens (`tokens.css`, `tailwind.config.js`, `brand.json`, pack ZIP).
+<p align="center">
+  <img src="public/favicon.svg" alt="CharteForge" width="72" height="72" />
+</p>
 
-## Architecture technique
+<p align="center">
+  <strong>Générateur automatique de chartes graphiques</strong><br />
+  PDF professionnel · Design tokens · Accessibilité WCAG
+</p>
 
-- **Frontend** : React 19 + TypeScript + Tailwind CSS v4 (Vite)
-- **Backend** : Express (`server.ts`) avec API REST, validation MIME/taille et limitation de débit (`express-rate-limit`)
-- **Base de données** : PostgreSQL (Cloud SQL) avec Drizzle ORM (`src/db/schema.ts`)
-- **Authentification** : Firebase Authentication (Google Sign-In) vérifiée côté serveur via `firebase-admin`
-- **Traitement d'images & SVG** : `sharp` (analyse raster, extraction de palette dominante, masques monochromes alpha) + `svgo` & assainissement XML strict
-- **Analyse & conversion de polices** : `opentype.js` (familles, graisses, glyphes FR/`€`/`« »`, axes variables) + `wawoff2` (compression WOFF2 embarquée dans le web et le PDF)
-- **Moteur PDF & Aperçu fidèle** : `src/shared/brandbook/renderer.ts` partagé à l'identique entre la prévisualisation page par page (`<iframe srcDoc>`) et Playwright (`playwright-core` + Chromium headless)
-- **Rédaction assistée** : API Gemini côté serveur (`@google/genai`) pour générer les textes d'introduction de chaque section
+<p align="center">
+  <a href="#architecture"><img src="https://img.shields.io/badge/Stack-React_19_+_Express-0F172A?style=flat-square" alt="Stack" /></a>
+  <a href="#installation"><img src="https://img.shields.io/badge/Node-%3E%3D_20-339933?style=flat-square&logo=node.js&logoColor=white" alt="Node" /></a>
+  <a href="#installation"><img src="https://img.shields.io/badge/Vite-8-646CFF?style=flat-square&logo=vite&logoColor=white" alt="Vite" /></a>
+  <a href="https://github.com/Leo-Segalini/CharteForge"><img src="https://img.shields.io/badge/Repo-GitHub-181717?style=flat-square&logo=github" alt="GitHub" /></a>
+</p>
 
-## Variables d'environnement
+---
 
-Copiez `.env.example` et renseignez les variables suivantes :
+Importez un logo, des polices et une palette : CharteForge produit un **brand book PDF** (Playwright) et un pack de tokens (`tokens.css`, `tailwind.config.js`, `brand.json`, ZIP logos/polices).
 
-- `GEMINI_API_KEY` : clé API Gemini utilisée uniquement côté serveur (`/api/ai/section-copy`)
-- `APP_URL` : URL publique de l'application
-- `SQL_HOST`, `SQL_USER`, `SQL_PASSWORD`, `SQL_DB_NAME`, `SQL_ADMIN_USER`, `SQL_ADMIN_PASSWORD` : injectées par Cloud SQL pour Drizzle ORM
-- `STRIPE_SECRET_KEY` *(optionnel)* : clé secrète Stripe (`sk_...`) pour ouvrir des sessions Stripe Checkout réelles ; en l'absence de clé, le mode bac à sable permet de tester l'activation de l'offre Pro directement en base
+## Parcours Studio (6 étapes)
 
-## Installation et démarrage
+| # | Étape | Livrable |
+|---|--------|----------|
+| 1 | Marque | Identité, ton, secteurs |
+| 2 | Logo | Variantes, monochrome, monogramme |
+| 3 | Couleurs | Rôles, nuances, contrastes WCAG AA/AAA |
+| 4 | Polices | Familles, rôles, WOFF2 |
+| 5 | Contenu | Textes de sections (assistés Gemini) |
+| 6 | Export | Aperçu fidèle + PDF + pack tokens |
+
+## Architecture
+
+```text
+┌─────────────────┐     ┌──────────────────────┐     ┌─────────────────┐
+│  React 19 +     │────▶│  Express (server.ts) │────▶│  PostgreSQL     │
+│  Tailwind v4    │     │  Auth · Upload · API │     │  Drizzle ORM    │
+└─────────────────┘     └──────────┬───────────┘     └─────────────────┘
+                                   │
+                    ┌──────────────┼──────────────┐
+                    ▼              ▼              ▼
+              Playwright      Gemini API      Stripe
+              (PDF book)    (section copy)   (Pro plan)
+```
+
+| Couche | Techno |
+|--------|--------|
+| Frontend | React 19 · TypeScript · Tailwind CSS v4 · Vite 8 |
+| API | Express · multer · express-rate-limit |
+| Données | PostgreSQL (Cloud SQL) · Drizzle (`src/db/schema.ts`) |
+| Auth | Firebase (Google) + e-mail/mot de passe (`firebase-admin`) |
+| Images / SVG | `sharp` · `svgo` + assainissement XML |
+| Polices | `opentype.js` · `wawoff2` |
+| PDF | Renderer partagé `src/shared/brandbook/renderer.ts` → iframe + Playwright |
+| IA | Gemini (`@google/genai`) **serveur uniquement** |
+| Billing | Stripe Checkout (optionnel) · plans `free` / `pro` |
+
+## Prérequis
+
+- Node.js **≥ 20**
+- Compte Firebase (auth)
+- PostgreSQL (local ou Cloud SQL)
+- Chromium Playwright pour l’export PDF
+- Clé Gemini (rédaction assistée) — optionnelle
+
+## Installation
 
 ```bash
+cp .env.example .env   # renseigner les secrets
 npm install
+npx playwright install chromium
 npm run dev
 ```
 
-L'application est servie sur `http://localhost:3000`.
+Application : [http://localhost:3000](http://localhost:3000)
+
+### Scripts
+
+| Commande | Rôle |
+|----------|------|
+| `npm run dev` | Serveur Express + Vite HMR |
+| `npm run build` | Build front production |
+| `npm start` | Démarrage serveur |
+| `npm run lint` | `tsc --noEmit` |
+| `npm test` | Tests (contraste, SVG, logos, PDF) |
 
 ### Production
 
@@ -38,27 +93,57 @@ npm run build
 npm start
 ```
 
-## Playwright & Chromium
+## Variables d’environnement
 
-Le moteur PDF détecte automatiquement `chrome-headless-shell` dans `/ms-playwright` ou `/root/.cache/ms-playwright`. En environnement local vierge, installez Chromium avec :
+Copiez `.env.example` puis renseignez :
+
+| Variable | Usage |
+|----------|--------|
+| `GEMINI_API_KEY` | Textes de sections (`/api/ai/section-copy`) — **serveur seul** |
+| `APP_URL` | URL publique de l’app |
+| `SQL_*` | Connexion PostgreSQL / Cloud SQL |
+| `STRIPE_SECRET_KEY` | Checkout Pro (optionnel — sinon sandbox plan) |
+| `BREVO_*` | E-mails de vérification |
+| `AUTH_SESSION_SECRET` | Sessions e-mail (HMAC) |
+
+> Ne committez jamais `.env`. Les secrets Stripe / Gemini restent côté serveur.
+
+## Playwright & PDF
+
+Le moteur PDF cherche `chrome-headless-shell` dans `/ms-playwright` ou `~/.cache/ms-playwright`. En local :
 
 ```bash
 npx playwright install chromium
 ```
 
-## Données de démonstration & Exemple PDF
-
-- La marque **Aurelia Atelier** (logo vectoriel, déclinaisons monochrome/négative/monogramme, palette WCAG vérifiée, typographies et 18 sections) est préchargée dans le Studio.
-- Un exemple PDF généré par Playwright est disponible dans `public/demo-charte-aurelia.pdf` (et téléchargeable directement depuis l'interface). Pour le régénérer :
+**Démo Aurelia Atelier** — marque préchargée (logo, palette WCAG, typo, 18 sections). PDF d’exemple : `public/demo-charte-aurelia.pdf`.
 
 ```bash
 npx tsx scripts/generateDemoPdf.ts
 ```
 
-## Tests automatisés
+## Sécurité (rappel)
+
+- Uploads : MIME réel, max 10 Mo, SVG assaini, raster via `sharp`
+- AuthZ sur chaque mutation de marque (`userId`)
+- Rate limit uploads / export / auth
+- Isolation multi-tenant des assets (logos, polices)
+
+## Tests
 
 ```bash
 npm test
 ```
 
-Les tests couvrent le calcul des contrastes WCAG 2.1, l'assainissement SVG et la génération automatique de variantes de logo, ainsi que le rendu PDF multi-pages via Playwright.
+Couverture : contrastes WCAG 2.1, assainissement SVG, variantes logo, rendu PDF multi-pages.
+
+## Repo
+
+- GitHub : [github.com/Leo-Segalini/CharteForge](https://github.com/Leo-Segalini/CharteForge)
+- Licence : usage projet privé — voir le propriétaire du dépôt
+
+---
+
+<p align="center">
+  <sub>CharteForge · brand books PDF fidèles à l’aperçu Studio</sub>
+</p>

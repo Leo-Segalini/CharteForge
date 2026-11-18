@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Deps &amp; GitHub Pages — CharteForge</title>
+  <link rel="stylesheet" href="../assets/styles.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Aller au contenu</a>
+  <div class="layout">
+    <nav class="sidebar" aria-label="Navigation documentation">
+      <p><strong>CharteForge Docs</strong></p>
+      <a href="../index.html">Accueil</a>
+      <a href="../changelog.html">Changelog</a>
+      <a href="deps-github-pages.html" aria-current="page">Deps &amp; Pages</a>
+    </nav>
+    <main class="content" id="main-content">
+      <h1>Résolution deps &amp; GitHub Pages</h1>
+      <div class="meta">
+        <span class="badge badge-ok">Stable</span>
+        <span>18 novembre 2026</span>
+      </div>
+
+      <section>
+        <h2>Description</h2>
+        <p>
+          <code>npm install</code> échouait avec <code>ERESOLVE</code> :
+          le projet pinait <code>esbuild@^0.25</code> alors que Vite 8 exige
+          le peer optionnel <code>^0.27 || ^0.28</code>.
+        </p>
+      </section>
+
+      <section>
+        <h2>Fichiers</h2>
+        <table>
+          <thead>
+            <tr><th>Fichier</th><th>Rôle</th><th>Action</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>package.json</code></td>
+              <td>esbuild ^0.28, nom charteforge, start via tsx</td>
+              <td><span class="badge">Modifié</span></td>
+            </tr>
+            <tr>
+              <td><code>vite.config.ts</code></td>
+              <td>base Pages + import.meta.dirname</td>
+              <td><span class="badge">Modifié</span></td>
+            </tr>
+            <tr>
+              <td><code>.github/workflows/pages.yml</code></td>
+              <td>Build &amp; deploy Pages</td>
+              <td><span class="badge">Créé</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section>
+        <h2>Sécurité</h2>
+        <ul>
+          <li class="check-pass">✅ Aucun secret ajouté au repo</li>
+          <li class="check-pass">✅ Pages = front statique uniquement (pas d’API)</li>
+          <li>⚠️ L’app complète (Express, PDF, BDD) reste en self-host / Cloud</li>
+        </ul>
+      </section>
+    </main>
+  </div>
+</body>
+</html>
