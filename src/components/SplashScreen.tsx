@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { AnimatePresence, motion, useReducedMotion } from 'motion/react';
 import { Sparkles } from 'lucide-react';
 import { BrandLogo } from './BrandLogo.tsx';
+import { publicUrl } from '../lib/publicUrl.ts';
 
 const EASE_OUT = [0.22, 1, 0.36, 1] as const;
 
@@ -97,7 +98,7 @@ export function SplashScreen() {
               className="mb-5 rounded-[1.75rem] border border-border-hairline bg-surface-canvas p-6 shadow-micro"
             >
               <img
-                src="/logo-mark.png"
+                src={publicUrl('logo-mark.png')}
                 alt=""
                 width={120}
                 height={52}

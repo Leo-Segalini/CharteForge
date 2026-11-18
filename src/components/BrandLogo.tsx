@@ -1,5 +1,6 @@
 import React from 'react';
 import { cn } from '../lib/cn.ts';
+import { publicUrl } from '../lib/publicUrl.ts';
 
 interface BrandLogoProps {
   variant?: 'dark' | 'light';
@@ -24,7 +25,7 @@ export function BrandLogo({
   return (
     <span className="inline-flex items-center gap-2.5 select-none whitespace-nowrap shrink-0">
       <img
-        src="/logo-mark.png"
+        src={publicUrl('logo-mark.png')}
         alt=""
         width={mark}
         height={Math.round(mark * 0.4)}
