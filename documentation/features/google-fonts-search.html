@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Google Fonts Search — CharteForge</title>
+  <link rel="stylesheet" href="../assets/styles.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Aller au contenu</a>
+  <div class="layout">
+    <nav class="sidebar" aria-label="Navigation documentation">
+      <p><strong>CharteForge Docs</strong></p>
+      <a href="../index.html">Accueil</a>
+      <a href="../changelog.html">Changelog</a>
+      <a href="google-fonts-search.html" aria-current="page">Google Fonts</a>
+    </nav>
+    <main class="content" id="main-content">
+      <h1>Recherche Google Fonts (étape 4)</h1>
+      <div class="meta">
+        <span class="badge badge-ok">Stable</span>
+        <span>18 novembre 2026</span>
+      </div>
+      <section>
+        <h2>Description</h2>
+        <p>
+          Remplace le <code>&lt;select&gt;</code> limité par un catalogue curaté
+          (~70 familles) + barre de recherche avec filtres de catégorie et aperçu live.
+        </p>
+      </section>
+      <section>
+        <h2>Fichiers</h2>
+        <ul>
+          <li><code>src/shared/googleFontsCatalog.ts</code></li>
+          <li><code>src/components/GoogleFontPicker.tsx</code></li>
+          <li><code>src/components/steps/Step4Fonts.tsx</code></li>
+        </ul>
+      </section>
+      <section>
+        <h2>Sécurité</h2>
+        <ul>
+          <li>✅ Pas de clé API Google (catalogue local)</li>
+          <li>✅ CSS chargé depuis fonts.googleapis.com uniquement pour les familles sélectionnées / prévisualisées</li>
+        </ul>
+      </section>
+    </main>
+  </div>
+</body>
+</html>

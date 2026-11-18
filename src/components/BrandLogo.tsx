@@ -1,4 +1,5 @@
 import React from 'react';
+import { cn } from '../lib/cn.ts';
 
 interface BrandLogoProps {
   variant?: 'dark' | 'light';
@@ -6,56 +7,36 @@ interface BrandLogoProps {
   showWordmark?: boolean;
 }
 
+const SIZE_MAP = {
+  sm: { mark: 28, word: 'text-base' },
+  md: { mark: 32, word: 'text-lg' },
+  lg: { mark: 40, word: 'text-xl' },
+} as const;
+
 export function BrandLogo({
   variant = 'dark',
   size = 'md',
   showWordmark = true,
 }: BrandLogoProps) {
-  const dim = size === 'sm' ? 24 : size === 'lg' ? 40 : 28;
-  const fg = variant === 'light' ? '#FFFFFF' : '#0F172A';
-  const strokeMuted = variant === 'light' ? 'rgba(255,255,255,0.28)' : '#CBD5E1';
-  const accent = '#C97B36';
+  const { mark, word } = SIZE_MAP[size];
+  const fg = variant === 'light' ? '#FFFFFF' : '#1D1D31';
 
   return (
     <span className="inline-flex items-center gap-2.5 select-none whitespace-nowrap shrink-0">
-      <svg
-        width={dim}
-        height={dim}
-        viewBox="0 0 36 36"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-        aria-hidden="true"
-        className="shrink-0"
-      >
-        {/* Outer precision frame */}
-        <rect
-          x="2"
-          y="2"
-          width="32"
-          height="32"
-          rx="7"
-          fill={variant === 'light' ? '#1E293B' : '#0F172A'}
-        />
-        {/* Internal architectural grid hairlines */}
-        <line x1="14" y1="7" x2="14" y2="29" stroke={strokeMuted} strokeWidth="1" />
-        <line x1="7" y1="22" x2="29" y2="22" stroke={strokeMuted} strokeWidth="1" />
-        {/* Monogram geometric C / Forge corner */}
-        <path
-          d="M24 11H13C11.3431 11 10 12.3431 10 14V22C10 23.6569 11.3431 25 13 25H24"
-          stroke="#FFFFFF"
-          strokeWidth="2.6"
-          strokeLinecap="square"
-        />
-        {/* Amber forge spark / registration mark */}
-        <rect x="21.5" y="16" width="5" height="5" rx="1.2" fill={accent} />
-      </svg>
+      <img
+        src="/logo-mark.png"
+        alt=""
+        width={mark}
+        height={Math.round(mark * 0.4)}
+        className={cn(
+          'shrink-0 object-contain object-center',
+          variant === 'light' && 'brightness-0 invert',
+        )}
+        style={{ width: mark, height: Math.round(mark * 0.45) }}
+        decoding="async"
+      />
       {showWordmark && (
-        <span
-          className={`font-bold tracking-tight ${
-            size === 'lg' ? 'text-2xl' : size === 'sm' ? 'text-base' : 'text-lg'
-          }`}
-          style={{ color: fg }}
-        >
+        <span className={cn(word, 'font-extrabold tracking-tight')} style={{ color: fg }}>
           CharteForge
         </span>
       )}

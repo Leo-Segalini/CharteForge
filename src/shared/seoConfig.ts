@@ -153,7 +153,7 @@ export function buildStructuredDataGraph(origin: string): Record<string, unknown
         url: `${cleanOrigin}/`,
         logo: {
           '@type': 'ImageObject',
-          url: `${cleanOrigin}/favicon.svg`,
+          url: `${cleanOrigin}/logo-mark.png`,
         },
         description:
           'Plateforme SaaS de génération automatisée de chartes graphiques professionnelles en PDF et de design tokens.',

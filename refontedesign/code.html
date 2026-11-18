@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+
+<html lang="fr"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_standard" name="shell-type"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{colors:{"wcag-pass-subtle":"#ECFDF5","surface-canvas":"#FFFFFF","inverse-surface":"#213145","secondary-container":"#ffa85e","border-hairline":"#E2E8F0","error":"#ba1a1a","surface-muted":"#F1F5F9","surface-subtle":"#F8FAFC","primary-container":"#182b49","inverse-on-surface":"#eaf1ff","surface-inverse":"#0F172A","background":"#f8f9ff","text-primary":"#0F172A","tertiary-fixed-dim":"#bec6e0","surface-card":"#FFFFFF","surface-container-highest":"#d3e4fe","surface":"#f8f9ff","inverse-primary":"#b4c7ed","wcag-pass":"#059669","on-error":"#ffffff","on-tertiary-container":"#8a92aa","tertiary-container":"#232b3f","on-primary":"#ffffff","surface-container-low":"#eff4ff","secondary":"#904d06","wcag-fail":"#E11D48","on-secondary":"#ffffff","on-tertiary-fixed-variant":"#3f465c","on-error-container":"#93000a","wcag-fail-subtle":"#FFF1F2","border-subtle":"#F1F5F9","surface-tint":"#4d5f80","on-secondary-container":"#753c00","on-secondary-fixed":"#2f1500","on-background":"#0b1c30","outline":"#75777e","on-tertiary-fixed":"#131b2e","border-dark":"#1E293B","on-secondary-fixed-variant":"#6e3900","error-container":"#ffdad6","tertiary":"#0e1629","on-surface":"#0b1c30","surface-container-lowest":"#ffffff","surface-bright":"#f8f9ff","on-primary-fixed":"#061b39","wcag-warning-subtle":"#FFFBEB","surface-dim":"#cbdbf5","text-muted":"#94A3B8","surface-container-high":"#dce9ff","outline-variant":"#c5c6ce","primary-fixed-dim":"#b4c7ed","primary":"#011633","on-surface-variant":"#44474e","surface-variant":"#d3e4fe","tertiary-fixed":"#dae2fd","surface-container":"#e5eeff","on-primary-container":"#8093b6","primary-fixed":"#d6e3ff","on-primary-fixed-variant":"#354767","wcag-warning":"#D97706","secondary-fixed":"#ffdcc3","secondary-fixed-dim":"#ffb77e","on-tertiary":"#ffffff","text-secondary":"#475569"},borderRadius:{DEFAULT:"0.25rem",lg:"0.5rem",xl:"0.75rem",full:"9999px"},spacing:{"space-lg":"1.5rem",margin:"2rem","space-xxs":"0.125rem","margin-mobile":"1rem","space-base":"1rem","space-xl":"2rem","space-md":"0.75rem","space-sm":"0.5rem","space-2xl":"3rem","gutter-mobile":"1rem",gutter:"1.5rem","space-xs":"0.25rem","space-3xl":"4.5rem"},fontFamily:{"display-hero":["Plus Jakarta Sans"],"headline-sm":["Plus Jakarta Sans"],"label-token":["JetBrains Mono"],"label-eyebrow":["JetBrains Mono"],"display-hero-mobile":["Plus Jakarta Sans"],"label-code":["JetBrains Mono"],"body-lg":["Plus Jakarta Sans"],"body-sm":["Plus Jakarta Sans"],"headline-md":["Plus Jakarta Sans"],"headline-lg-mobile":["Plus Jakarta Sans"],"headline-lg":["Plus Jakarta Sans"],caption:["Plus Jakarta Sans"],"body-md":["Plus Jakarta Sans"]},fontSize:{"display-hero":["48px",{lineHeight:"56px",letterSpacing:"-0.03em",fontWeight:"800"}],"headline-sm":["18px",{lineHeight:"24px",letterSpacing:"-0.015em",fontWeight:"600"}],"label-token":["11px",{lineHeight:"14px",letterSpacing:"0.02em",fontWeight:"600"}],"label-eyebrow":["11px",{lineHeight:"16px",letterSpacing:"0.08em",fontWeight:"700"}],"display-hero-mobile":["32px",{lineHeight:"40px",letterSpacing:"-0.025em",fontWeight:"800"}],"label-code":["13px",{lineHeight:"18px",letterSpacing:"-0.01em",fontWeight:"500"}],"body-lg":["17px",{lineHeight:"26px",letterSpacing:"-0.01em",fontWeight:"400"}],"body-sm":["13px",{lineHeight:"18px",letterSpacing:"0em",fontWeight:"400"}],"headline-md":["22px",{lineHeight:"28px",letterSpacing:"-0.02em",fontWeight:"700"}],"headline-lg-mobile":["26px",{lineHeight:"34px",letterSpacing:"-0.02em",fontWeight:"700"}],"headline-lg":["32px",{lineHeight:"40px",letterSpacing:"-0.025em",fontWeight:"700"}],caption:["12px",{lineHeight:"16px",letterSpacing:"0.01em",fontWeight:"500"}],"body-md":["15px",{lineHeight:"22px",letterSpacing:"0em",fontWeight:"400"}]}}}}</script></head><body class="bg-surface font-body-md text-body-md text-on-surface antialiased"><header class="fixed top-0 w-full z-50 bg-surface-canvas/90 backdrop-blur-xl shadow-[0_1px_8px_rgba(15,23,42,0.04)]"><div class="h-16 w-full max-w-[1280px] mx-auto px-margin flex items-center justify-between"><div class="flex items-center gap-space-sm"><img alt="CharteForge Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/ALJJyrA1a7D7NQhlFeFudHElCJu6_356lVeVRxXdj7n2g24LSzd8ie_C40FCu2f2HMy_KnmLRCnXdVXlabapvblW72Hb-Wgq4KpmK4VQZf7aIyCsx5TyreY7r4aXuRO3BVhzvbRdOC7o80ER2rE6P8BwgzaiRwaqlawFNjPLrwy3aev6mjg9WO8ZfsbVD1GTZfrFWAH27WgR8T6OaBnDV-YgaGegAilVa92DF2BZoKcbcl7a4A"/><span class="font-headline-sm text-headline-sm text-text-primary tracking-tight">CharteForge</span><span class="font-label-token text-label-token uppercase px-space-xs py-space-xxs rounded bg-surface-muted text-text-secondary">v2.4</span></div><nav class="hidden lg:flex items-center gap-space-lg" data-active-classes="text-text-primary font-semibold"><a aria-current="page" class="transition-colors text-text-primary font-semibold" data-path="fonctionnalites" href="#">Fonctionnalités</a><a class="font-body-sm text-body-sm text-text-secondary hover:text-text-primary transition-colors" data-path="normes-wcag" href="#">Normes &amp; WCAG</a><a class="font-body-sm text-body-sm text-text-secondary hover:text-text-primary transition-colors" data-path="tarifs" href="#">Tarifs</a><a class="font-body-sm text-body-sm text-text-secondary hover:text-text-primary transition-colors" data-path="exemples-docs" href="#">Exemples &amp; Docs</a></nav><div class="flex items-center gap-space-md"><a class="hidden md:inline-flex items-center font-body-sm text-body-sm text-text-secondary hover:text-text-primary transition-colors" data-path="demo-pdf" href="#">Consulter la démo PDF (18p)</a><div class="hidden md:block w-px h-4 bg-border-hairline"></div><a class="font-body-sm text-body-sm text-text-secondary hover:text-text-primary transition-colors" data-path="connexion" href="#">Connexion</a><a class="inline-flex items-center justify-center h-10 px-space-md rounded-lg bg-primary-container text-on-primary font-body-sm text-body-sm font-semibold shadow-sm hover:bg-surface-inverse hover:-translate-y-0.5 transition-all" data-path="creer-charte" href="#">Créer ma charte graphique</a><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center ml-space-xs"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="w-full pt-16 bg-surface min-h-[calc(100vh-140px)]"><div class="flex flex-col w-full">
+<!-- Toast Feedback Floating Component -->
+<div class="fixed bottom-6 right-6 z-50 transform translate-y-20 opacity-0 transition-all duration-300 pointer-events-none flex items-center gap-space-sm bg-surface-inverse text-on-primary px-space-md py-space-sm rounded-lg shadow-xl" id="toast-notification">
+<span class="material-symbols-outlined text-wcag-pass text-[20px]">check_circle</span>
+<span class="font-body-sm text-body-sm font-medium" id="toast-text">Copié dans le presse-papier !</span>
+</div>
+<!-- HERO SECTION HAUTE PRÉCISION -->
+<section class="w-full max-w-[1280px] mx-auto px-margin py-space-3xl">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter items-center">
+<!-- Left Column: Copy & High Conversion Triggers -->
+<div class="lg:col-span-6 flex flex-col items-start gap-space-lg">
+<!-- Live Pill Eyebrow -->
+<div class="inline-flex items-center gap-space-xs px-space-sm py-space-xxs rounded-full bg-surface-muted border-0 shadow-sm">
+<span class="relative flex h-2 w-2">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-secondary opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2 w-2 bg-secondary"></span>
+</span>
+<span class="font-label-eyebrow text-label-eyebrow text-secondary uppercase tracking-wider">Atelier automatisé d'identité visuelle</span>
+<span class="font-label-token text-label-token text-text-muted px-1.5 py-0.5 rounded bg-surface-canvas shadow-xs">v2.4.2</span>
+</div>
+<!-- Main Title -->
+<h1 class="font-display-hero text-display-hero text-text-primary tracking-tight">
+          Produisez des chartes graphiques d’agence en <span class="text-secondary font-extrabold">PDF</span> et <span class="text-primary-container font-extrabold">Design Tokens</span>.
+        </h1>
+<!-- Subtitle -->
+<p class="font-body-lg text-body-lg text-text-secondary">
+          Importez votre logo, vos polices et vos couleurs. CharteForge calcule les zones d'exclusion, les variantes monochromes, la matrice d'accessibilité WCAG et met en page un brand book complet prêt à livrer à vos clients ou équipes produit.
+        </p>
+<!-- CTA Action Buttons -->
+<div class="flex flex-wrap items-center gap-space-md w-full pt-space-xs">
+<a class="inline-flex items-center justify-center gap-space-sm h-11 px-space-lg rounded-lg bg-primary-container text-on-primary font-headline-sm text-body-md font-semibold shadow-md hover:bg-surface-inverse hover:-translate-y-0.5 active:translate-y-0 transition-all duration-150 group" href="#">
+<span>Créer ma charte graphique</span>
+<span class="material-symbols-outlined text-[18px] group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</a>
+<button class="inline-flex items-center justify-center gap-space-xs h-11 px-space-md rounded-lg bg-surface-canvas text-text-primary font-body-md font-medium shadow-sm hover:bg-surface-subtle hover:text-primary-container transition-all" onclick="triggerToast('Démo A4 PDF 18 pages en téléchargement...')">
+<span class="material-symbols-outlined text-text-secondary text-[20px]">download</span>
+<span>Télécharger un exemple PDF</span>
+</button>
+</div>
+<!-- Trust Badges List -->
+<div class="flex flex-col sm:flex-row items-start sm:items-center gap-x-space-md gap-y-space-xs pt-space-xs text-text-secondary font-body-sm text-body-sm">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-wcag-pass text-[18px]">check_circle</span>
+<span>18 chapitres configurables (FR / EN)</span>
+</div>
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-wcag-pass text-[18px]">check_circle</span>
+<span>Export CSS, Tailwind &amp; JSON</span>
+</div>
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-wcag-pass text-[18px]">check_circle</span>
+<span>Accès gratuit immédiat</span>
+</div>
+</div>
+</div>
+<!-- Right Column: Interactive Studio Specimen Sheet (A4 Landscape Preview) -->
+<div class="lg:col-span-6 relative w-full">
+<!-- Ambient Glow Backing -->
+<div class="absolute -inset-4 bg-gradient-to-tr from-secondary/10 via-primary-container/5 to-surface-tint/10 rounded-2xl blur-2xl -z-10 opacity-70"></div>
+<div class="w-full bg-surface-canvas rounded-xl shadow-xl p-space-md flex flex-col gap-space-md transition-all duration-300">
+<!-- Sheet Header Bar -->
+<div class="flex items-center justify-between pb-space-sm">
+<div class="flex items-center gap-space-xs">
+<span class="font-label-code text-label-code font-bold text-text-primary uppercase tracking-tight">04 / Logotype &amp; Zone d'exclusion</span>
+<span class="h-1.5 w-1.5 rounded-full bg-secondary"></span>
+<span class="font-caption text-caption text-text-muted">Aurelia Studio Identity</span>
+</div>
+<div class="flex items-center gap-space-xs font-label-token text-label-token text-text-muted bg-surface-muted px-space-xs py-space-xxs rounded">
+<span class="material-symbols-outlined text-[14px]">aspect_ratio</span>
+<span>A4 PAYSAGE • 300 DPI</span>
+</div>
+</div>
+<!-- Main Visual Canvas: Exclusion Zone with 2X bounds -->
+<div class="relative w-full h-56 bg-surface-subtle rounded-lg p-space-md flex flex-col items-center justify-center overflow-hidden">
+<!-- Grid Lines Visual Background -->
+<div class="absolute inset-0 opacity-40 [background-image:radial-gradient(#CBD5E1_1px,transparent_1px)] [background-size:16px_16px]"></div>
+<!-- Dimensioning Guides -->
+<div class="relative z-10 w-64 h-28 flex flex-col items-center justify-center p-space-sm bg-surface-canvas/90 rounded-md shadow-sm">
+<!-- Corner Marks in Warm Ochre -->
+<span class="absolute top-1 left-1 font-label-token text-label-token text-secondary">2X</span>
+<span class="absolute bottom-1 right-1 font-label-token text-label-token text-secondary">2X</span>
+<span class="absolute top-1 right-1 font-label-token text-label-token text-secondary">2X</span>
+<span class="absolute bottom-1 left-1 font-label-token text-label-token text-secondary">2X</span>
+<!-- Brandmark Specimen -->
+<div class="text-center">
+<span class="font-display-hero-mobile text-headline-md font-extrabold tracking-widest text-primary-container">AURÉLIA</span>
+<span class="block font-label-eyebrow text-label-eyebrow uppercase tracking-[0.25em] text-text-muted -mt-1">Atelier d'Architecture</span>
+</div>
+</div>
+<!-- Dimension Footer Footnotes inside preview -->
+<div class="absolute bottom-2 left-3 right-3 flex items-center justify-between text-text-muted font-label-token text-label-token">
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[12px]">straighten</span>
+                Min. Print : 24 mm
+              </span>
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[12px]">display_settings</span>
+                Web : 96 px
+              </span>
+</div>
+</div>
+<!-- Logo Variants Quad Sub-Grid -->
+<div class="grid grid-cols-2 sm:grid-cols-4 gap-space-xs">
+<!-- Variant A: Fond clair -->
+<div class="p-space-xs rounded bg-surface-subtle flex flex-col gap-1">
+<div class="flex items-center justify-between">
+<span class="font-label-token text-label-token text-text-muted">A • Principal</span>
+<span class="w-1.5 h-1.5 rounded-full bg-wcag-pass"></span>
+</div>
+<div class="h-10 rounded bg-surface-canvas flex items-center justify-center shadow-xs">
+<span class="font-headline-sm text-[11px] tracking-wider text-primary-container">AURÉLIA</span>
+</div>
+<span class="font-caption text-[10px] text-text-muted">Fond clair</span>
+</div>
+<!-- Variant B: Fond primaire (Navy) -->
+<div class="p-space-xs rounded bg-surface-subtle flex flex-col gap-1">
+<div class="flex items-center justify-between">
+<span class="font-label-token text-label-token text-text-muted">B • Négatif</span>
+<span class="w-1.5 h-1.5 rounded-full bg-wcag-pass"></span>
+</div>
+<div class="h-10 rounded bg-primary-container flex items-center justify-center shadow-xs">
+<span class="font-headline-sm text-[11px] tracking-wider text-on-primary">AURÉLIA</span>
+</div>
+<span class="font-caption text-[10px] text-text-muted">Fond primaire</span>
+</div>
+<!-- Variant C: Mono N&B -->
+<div class="p-space-xs rounded bg-surface-subtle flex flex-col gap-1">
+<div class="flex items-center justify-between">
+<span class="font-label-token text-label-token text-text-muted">C • N&amp;B</span>
+<span class="w-1.5 h-1.5 rounded-full bg-wcag-pass"></span>
+</div>
+<div class="h-10 rounded bg-surface-muted flex items-center justify-center shadow-xs">
+<span class="font-headline-sm text-[11px] tracking-wider text-surface-inverse">AURÉLIA</span>
+</div>
+<span class="font-caption text-[10px] text-text-muted">100% Noir</span>
+</div>
+<!-- Variant D: Interdit Contrast Alert -->
+<div class="p-space-xs rounded bg-wcag-fail-subtle flex flex-col gap-1 relative overflow-hidden group">
+<div class="flex items-center justify-between">
+<span class="font-label-token text-label-token text-wcag-fail font-bold">Interdit</span>
+<span class="material-symbols-outlined text-wcag-fail text-[13px]">block</span>
+</div>
+<div class="h-10 rounded bg-secondary-container flex items-center justify-center shadow-xs relative">
+<span class="font-headline-sm text-[11px] tracking-wider text-on-primary opacity-60">AURÉLIA</span>
+<div class="absolute inset-0 flex items-center justify-center">
+<div class="w-full h-0.5 bg-wcag-fail rotate-12"></div>
+</div>
+</div>
+<span class="font-caption text-[10px] text-wcag-fail font-semibold">Contraste &lt; 3:1</span>
+</div>
+</div>
+<!-- Color Swatch Strip & Quick Token Copy -->
+<div class="flex flex-col sm:flex-row items-center justify-between gap-space-sm pt-space-xs bg-surface-muted/60 p-space-sm rounded-lg">
+<!-- Swatch 1 -->
+<div class="flex items-center gap-space-xs cursor-pointer group" onclick="copyToken('#182B49')">
+<div class="w-6 h-6 rounded bg-primary-container shadow-xs"></div>
+<div class="flex flex-col">
+<span class="font-label-code text-label-token text-text-primary font-bold group-hover:text-secondary transition-colors">#182B49</span>
+<span class="font-caption text-[10px] text-text-muted">CMJN 67/41/0/71</span>
+</div>
+</div>
+<!-- Swatch 2 -->
+<div class="flex items-center gap-space-xs cursor-pointer group" onclick="copyToken('#C97B36')">
+<div class="w-6 h-6 rounded bg-secondary shadow-xs"></div>
+<div class="flex flex-col">
+<span class="font-label-code text-label-token text-text-primary font-bold group-hover:text-secondary transition-colors">#C97B36</span>
+<span class="font-caption text-[10px] text-text-muted">Ratio AAA 14.2:1</span>
+</div>
+</div>
+<!-- Quick Export Token Snippet -->
+<button class="w-full sm:w-auto inline-flex items-center justify-between gap-space-xs px-space-sm py-space-xs rounded bg-surface-inverse text-on-primary font-label-code text-[11px] hover:bg-primary-container transition-all" onclick="copyToken('--color-primary: #182B49;')">
+<span class="text-secondary font-mono">--color-primary: #182B49;</span>
+<span class="material-symbols-outlined text-[14px] text-text-muted">content_copy</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- PROCESSUS EN 6 ÉTAPES GUIDÉES -->
+<section class="w-full bg-surface-subtle py-space-3xl">
+<div class="w-full max-w-[1280px] mx-auto px-margin flex flex-col gap-space-2xl">
+<!-- Section Header -->
+<div class="flex flex-col items-start gap-space-xs max-w-2xl">
+<span class="font-label-eyebrow text-label-eyebrow text-secondary uppercase tracking-widest">Chaîne de production automatisée</span>
+<h2 class="font-headline-lg text-headline-lg text-text-primary">
+          Du logo brut au dossier normatif complet en 6 étapes guidées
+        </h2>
+<p class="font-body-md text-body-md text-text-secondary">
+          Une suite d'algorithmes déterministes inspecte chaque asset graphique pour extraire sa structure mathématique et assembler un guide de style rigoureux.
+        </p>
+</div>
+<!-- 6 Steps Bento Matrix (3x2 Desktop) -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-gutter">
+<!-- Step 01 -->
+<div class="bg-surface-canvas p-space-lg rounded-xl shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-200 flex flex-col justify-between group">
+<div class="flex flex-col gap-space-sm">
+<div class="flex items-center justify-between">
+<span class="font-label-code text-label-code font-bold text-secondary">01</span>
+<span class="material-symbols-outlined text-text-muted group-hover:text-primary-container transition-colors">tap_and_play</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-text-primary">Analyse vectorielle &amp; déclinaisons du logo</h3>
+<p class="font-body-sm text-body-sm text-text-secondary leading-relaxed">
+              Importez votre SVG, PNG ou WebP. CharteForge assainit les tracés, calcule les cotes de sécurité minimales et génère automatiquement le négatif blanc et le monogramme recadré.
+            </p>
+</div>
+<div class="mt-space-md pt-space-sm flex items-center justify-between font-label-token text-label-token text-text-muted">
+<span>SVG Sanitizer Engine</span>
+<span class="text-wcag-pass font-bold">Auto 300 DPI</span>
+</div>
+</div>
+<!-- Step 02 -->
+<div class="bg-surface-canvas p-space-lg rounded-xl shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-200 flex flex-col justify-between group">
+<div class="flex flex-col gap-space-sm">
+<div class="flex items-center justify-between">
+<span class="font-label-code text-label-code font-bold text-secondary">02</span>
+<span class="material-symbols-outlined text-text-muted group-hover:text-primary-container transition-colors">palette</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-text-primary">Palette structurée, CMJN &amp; WCAG 2.1</h3>
+<p class="font-body-sm text-body-sm text-text-secondary leading-relaxed">
+              Attribuez un rôle précis à chaque couleur (primaire, surface, texte, succès, erreur). Obtenez les échelles 100–900, conversions RGB/HSL/CMJN et la matrice d'associations conformes AA/AAA.
+            </p>
+</div>
+<div class="mt-space-md pt-space-sm flex items-center justify-between font-label-token text-label-token text-text-muted">
+<span>Color Profile v4</span>
+<span class="text-secondary font-bold">WCAG Matrice 2.1</span>
+</div>
+</div>
+<!-- Step 03 -->
+<div class="bg-surface-canvas p-space-lg rounded-xl shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-200 flex flex-col justify-between group">
+<div class="flex flex-col gap-space-sm">
+<div class="flex items-center justify-between">
+<span class="font-label-code text-label-code font-bold text-secondary">03</span>
+<span class="material-symbols-outlined text-text-muted group-hover:text-primary-container transition-colors">match_case</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-text-primary">Typographie réelle &amp; échelles modulaires</h3>
+<p class="font-body-sm text-body-sm text-text-secondary leading-relaxed">
+              Importez vos fichiers TTF, OTF ou WOFF2 (ou Google Fonts). La plateforme convertit en WOFF2, inspecte le jeu de glyphes latins et calcule le ratio modulaire pour le corps et les titres.
+            </p>
+</div>
+<div class="mt-space-md pt-space-sm flex items-center justify-between font-label-token text-label-token text-text-muted">
+<span>OpenType Inspector</span>
+<span class="text-wcag-pass font-bold">Auto Subsetting</span>
+</div>
+</div>
+<!-- Step 04 -->
+<div class="bg-surface-canvas p-space-lg rounded-xl shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-200 flex flex-col justify-between group">
+<div class="flex flex-col gap-space-sm">
+<div class="flex items-center justify-between">
+<span class="font-label-code text-label-code font-bold text-secondary">04</span>
+<span class="material-symbols-outlined text-text-muted group-hover:text-primary-container transition-colors">picture_as_pdf</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-text-primary">Brand book A4 PDF &amp; Pack Tokens</h3>
+<p class="font-body-sm text-body-sm text-text-secondary leading-relaxed">
+              Compilez jusqu'à 18 chapitres paginés en A4 paysage ou portrait via rendu Chromium natif, accompagnés des fichiers tokens.css, tailwind.config.js, brand.json et zip complet.
+            </p>
+</div>
+<div class="mt-space-md pt-space-sm flex items-center justify-between font-label-token text-label-token text-text-muted">
+<span>Chromium PDF Engine</span>
+<span class="text-primary-container font-bold">ZIP Pack Ready</span>
+</div>
+</div>
+<!-- Step 05 -->
+<div class="bg-surface-canvas p-space-lg rounded-xl shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-200 flex flex-col justify-between group">
+<div class="flex flex-col gap-space-sm">
+<div class="flex items-center justify-between">
+<span class="font-label-code text-label-code font-bold text-secondary">05</span>
+<span class="material-symbols-outlined text-text-muted group-hover:text-primary-container transition-colors">gavel</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-text-primary">Gouvernance de marque &amp; règles d'usage</h3>
+<p class="font-body-sm text-body-sm text-text-secondary leading-relaxed">
+              Formulation automatique des cas d'interdits (déformations, rotations proscrites, contrastes insuffisants, co-branding) avec avertissements illustrés sans effort rédactionnel.
+            </p>
+</div>
+<div class="mt-space-md pt-space-sm flex items-center justify-between font-label-token text-label-token text-text-muted">
+<span>Brand Ruleset</span>
+<span class="text-wcag-warning font-bold">8 Cas types</span>
+</div>
+</div>
+<!-- Step 06 -->
+<div class="bg-surface-canvas p-space-lg rounded-xl shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-200 flex flex-col justify-between group">
+<div class="flex flex-col gap-space-sm">
+<div class="flex items-center justify-between">
+<span class="font-label-code text-label-code font-bold text-secondary">06</span>
+<span class="material-symbols-outlined text-text-muted group-hover:text-primary-container transition-colors">share</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-text-primary">Partage client &amp; livrables protégés</h3>
+<p class="font-body-sm text-body-sm text-text-secondary leading-relaxed">
+              Générez un espace de consultation en ligne privé, protégé par mot de passe avec lien public ou restreint, permettant le téléchargement individuel de chaque asset vectoriel.
+            </p>
+</div>
+<div class="mt-space-md pt-space-sm flex items-center justify-between font-label-token text-label-token text-text-muted">
+<span>Accès cloud chiffré</span>
+<span class="text-wcag-pass font-bold">Lien sécurisé</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION STUDIO INTERACTIF : 'Chaque règle calculée à partir de vos véritables fichiers' -->
+<section class="w-full max-w-[1280px] mx-auto px-margin py-space-3xl">
+<div class="flex flex-col gap-space-xl">
+<!-- Studio Header -->
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-space-md">
+<div class="flex flex-col gap-space-xs max-w-xl">
+<span class="font-label-eyebrow text-label-eyebrow text-secondary uppercase tracking-widest">Contenu du livrable généré</span>
+<h2 class="font-headline-lg text-headline-lg text-text-primary">
+            Chaque règle calculée à partir de vos véritables fichiers
+          </h2>
+<p class="font-body-md text-body-md text-text-secondary">
+            Zéro placeholder générique. Les données ci-dessous proviennent de l'exécution en temps réel des règles appliquées aux tokens de démonstration.
+          </p>
+</div>
+<a class="inline-flex items-center gap-space-xs font-body-sm text-body-sm text-text-secondary hover:text-text-primary underline underline-offset-4 decoration-text-muted hover:decoration-text-primary transition-all" href="#" onclick="triggerToast('Ouverture du viewer PDF démo...'); return false;">
+<span class="material-symbols-outlined text-[18px]">menu_book</span>
+<span>Consulter le PDF démo complet (18 pages)</span>
+</a>
+</div>
+<!-- Split Screen Workbench -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter items-stretch">
+<!-- Left Panel: WCAG Accessibility Matrix & Diagnostics -->
+<div class="lg:col-span-6 bg-surface-canvas rounded-xl shadow-sm p-space-lg flex flex-col justify-between">
+<div class="flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-secondary text-[22px]">verified_user</span>
+<h3 class="font-headline-sm text-headline-sm text-text-primary">Matrice d'accessibilité WCAG &amp; usages</h3>
+</div>
+<span class="font-label-token text-label-token bg-wcag-pass-subtle text-wcag-pass px-space-xs py-space-xxs rounded">
+                ISO 40500 / WCAG 2.1
+              </span>
+</div>
+<p class="font-body-sm text-body-sm text-text-secondary">
+              Vérification automatique de chaque combinaison texte/fond avec seuils AA (4.5:1) et AAA (7.0:1), accompagnée de suggestions correctives si nécessaire.
+            </p>
+<!-- Diagnostic Table -->
+<div class="w-full overflow-hidden rounded-lg bg-surface-subtle mt-space-xs">
+<table class="w-full text-left font-body-sm text-body-sm">
+<thead>
+<tr class="bg-surface-muted text-text-muted font-label-token text-label-token uppercase tracking-wider">
+<th class="py-space-xs px-space-sm">Combinaison</th>
+<th class="py-space-xs px-space-sm">Ratio</th>
+<th class="py-space-xs px-space-sm text-center">AA</th>
+<th class="py-space-xs px-space-sm text-center">AAA</th>
+</tr>
+</thead>
+<tbody class="divide-y-0 text-text-primary font-mono text-[13px]">
+<tr class="hover:bg-surface-canvas transition-colors">
+<td class="py-space-sm px-space-sm flex items-center gap-2">
+<div class="w-3.5 h-3.5 rounded bg-surface-canvas shadow-xs"></div>
+<span class="font-body-sm text-text-primary text-[13px]">Blanc sur Primaire <span class="font-mono text-text-muted">(#182B49)</span></span>
+</td>
+<td class="py-space-sm px-space-sm font-bold text-text-primary">14.1 : 1</td>
+<td class="py-space-sm px-space-sm text-center">
+<span class="inline-flex items-center px-1.5 py-0.5 rounded-full text-[11px] font-bold bg-wcag-pass-subtle text-wcag-pass">Conforme</span>
+</td>
+<td class="py-space-sm px-space-sm text-center">
+<span class="inline-flex items-center px-1.5 py-0.5 rounded-full text-[11px] font-bold bg-wcag-pass-subtle text-wcag-pass">Conforme</span>
+</td>
+</tr>
+<tr class="hover:bg-surface-canvas transition-colors">
+<td class="py-space-sm px-space-sm flex items-center gap-2">
+<div class="w-3.5 h-3.5 rounded bg-surface-inverse shadow-xs"></div>
+<span class="font-body-sm text-text-primary text-[13px]">Ardoise sur Surface <span class="font-mono text-text-muted">(#F8FAFC)</span></span>
+</td>
+<td class="py-space-sm px-space-sm font-bold text-text-primary">17.1 : 1</td>
+<td class="py-space-sm px-space-sm text-center">
+<span class="inline-flex items-center px-1.5 py-0.5 rounded-full text-[11px] font-bold bg-wcag-pass-subtle text-wcag-pass">Conforme</span>
+</td>
+<td class="py-space-sm px-space-sm text-center">
+<span class="inline-flex items-center px-1.5 py-0.5 rounded-full text-[11px] font-bold bg-wcag-pass-subtle text-wcag-pass">Conforme</span>
+</td>
+</tr>
+<tr class="hover:bg-surface-canvas transition-colors">
+<td class="py-space-sm px-space-sm flex items-center gap-2">
+<div class="w-3.5 h-3.5 rounded bg-secondary shadow-xs"></div>
+<span class="font-body-sm text-text-primary text-[13px]">Accent Ochre sur Fond <span class="font-mono text-text-muted">(#FFFFFF)</span></span>
+</td>
+<td class="py-space-sm px-space-sm font-bold text-wcag-warning">3.4 : 1</td>
+<td class="py-space-sm px-space-sm text-center">
+<span class="inline-flex items-center px-1.5 py-0.5 rounded-full text-[11px] font-bold bg-wcag-warning-subtle text-wcag-warning">Grands titres</span>
+</td>
+<td class="py-space-sm px-space-sm text-center">
+<span class="inline-flex items-center px-1.5 py-0.5 rounded-full text-[11px] font-bold bg-wcag-fail-subtle text-wcag-fail">Non recommandé</span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Recommendation callout box -->
+<div class="p-space-sm rounded-lg bg-surface-muted flex items-start gap-space-xs">
+<span class="material-symbols-outlined text-secondary text-[18px] shrink-0 mt-0.5">tips_and_updates</span>
+<p class="font-caption text-caption text-text-secondary leading-snug">
+<span class="font-semibold text-text-primary">Recommandation du moteur :</span> L'accent #C97B36 est automatiquement restreint aux titres de calibre ≥ 24px et aux éléments d'interface interactifs ≥ 3:1.
+              </p>
+</div>
+</div>
+<!-- Bottom Micro Specimen -->
+<div class="flex items-center justify-between pt-space-md text-text-muted font-label-token text-label-token">
+<span>Algorithme : APCA &amp; WCAG v2.1 Rel</span>
+<span class="text-text-primary font-semibold">100% Déterministe</span>
+</div>
+</div>
+<!-- Right Panel: IDE Code Kit & Tokens Export (Linear/Vercel style terminal) -->
+<div class="lg:col-span-6 bg-surface-inverse text-on-primary rounded-xl shadow-xl p-space-lg flex flex-col justify-between">
+<div class="flex flex-col gap-space-md">
+<!-- Terminal Topbar & Interactive Tabs -->
+<div class="flex flex-wrap items-center justify-between gap-space-sm pb-space-xs">
+<div class="flex items-center gap-space-xs">
+<span class="w-3 h-3 rounded-full bg-wcag-fail/80"></span>
+<span class="w-3 h-3 rounded-full bg-wcag-warning/80"></span>
+<span class="w-3 h-3 rounded-full bg-wcag-pass/80"></span>
+<span class="ml-2 font-label-token text-label-token text-text-muted">CharteForge Engine • Build v2.4</span>
+</div>
+<!-- Language / File Tabs -->
+<div class="flex items-center bg-tertiary-container/80 p-0.5 rounded-lg">
+<button class="px-space-xs py-1 rounded text-label-token font-label-token bg-primary-container text-on-primary font-bold shadow-xs" id="tab-css" onclick="switchTokenTab('css')">
+                  tokens.css
+                </button>
+<button class="px-space-xs py-1 rounded text-label-token font-label-token text-text-muted hover:text-on-primary transition-colors" id="tab-tailwind" onclick="switchTokenTab('tailwind')">
+                  tailwind.config.js
+                </button>
+<button class="px-space-xs py-1 rounded text-label-token font-label-token text-text-muted hover:text-on-primary transition-colors" id="tab-json" onclick="switchTokenTab('json')">
+                  brand.json
+                </button>
+</div>
+</div>
+<!-- Active Code Display Frame -->
+<div class="relative bg-surface-inverse/80 rounded-lg p-space-sm font-label-code text-label-code overflow-x-auto min-h-[220px]">
+<!-- Tab CSS Content -->
+<pre class="text-on-primary leading-relaxed" id="code-css"><span class="text-text-muted">:root {</span>
+  <span class="text-secondary">--color-primary</span>: <span class="text-on-primary font-bold">#182B49</span>;
+  <span class="text-secondary">--color-primary-rgb</span>: <span class="text-tertiary-fixed-dim">24, 43, 73</span>;
+  <span class="text-secondary">--color-accent</span>: <span class="text-on-primary font-bold">#C97B36</span>;
+  <span class="text-secondary">--color-surface</span>: <span class="text-on-primary font-bold">#F8FAFC</span>;
+  <span class="text-secondary">--font-heading</span>: <span class="text-secondary-fixed-dim">'Plus Jakarta Sans'</span>, sans-serif;
+  <span class="text-secondary">--font-mono</span>: <span class="text-secondary-fixed-dim">'JetBrains Mono'</span>, monospace;
+  <span class="text-secondary">--radius-card</span>: <span class="text-on-secondary-container">12px</span>;
+  <span class="text-secondary">--ratio-modular</span>: <span class="text-on-secondary-container">1.250</span>; <span class="text-text-muted">/* Major Third */</span>
+<span class="text-text-muted">}</span></pre>
+<!-- Tab Tailwind Content -->
+<pre class="hidden text-on-primary leading-relaxed" id="code-tailwind"><span class="text-text-muted">module.exports = {</span>
+  theme: {
+    extend: {
+      colors: {
+        brand: {
+          navy: <span class="text-secondary">'#182B49'</span>,
+          ochre: <span class="text-secondary">'#C97B36'</span>,
+          slate: <span class="text-secondary">'#0F172A'</span>
+        }
+      }
+    }
+  }
+<span class="text-text-muted">}</span></pre>
+<!-- Tab JSON Content -->
+<pre class="hidden text-on-primary leading-relaxed" id="code-json"><span class="text-text-muted">{</span>
+  <span class="text-secondary">"name"</span>: <span class="text-secondary-fixed-dim">"Aurelia Studio"</span>,
+  <span class="text-secondary">"version"</span>: <span class="text-secondary-fixed-dim">"1.0.0"</span>,
+  <span class="text-secondary">"tokens"</span>: {
+    <span class="text-secondary">"primary"</span>: { <span class="text-secondary">"hex"</span>: <span class="text-secondary-fixed-dim">"#182B49"</span>, <span class="text-secondary">"cmyk"</span>: [67, 41, 0, 71] },
+    <span class="text-secondary">"accent"</span>: { <span class="text-secondary">"hex"</span>: <span class="text-secondary-fixed-dim">"#C97B36"</span>, <span class="text-secondary">"cmyk"</span>: [0, 48, 80, 21] }
+  }
+<span class="text-text-muted">}</span></pre>
+</div>
+</div>
+<!-- Bottom Actions inside Terminal -->
+<div class="flex items-center justify-between pt-space-sm">
+<span class="font-caption text-caption text-text-muted flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px] text-wcag-pass">terminal</span>
+              Format prêt pour CI/CD &amp; Figma Tokens Plugin
+            </span>
+<button class="inline-flex items-center gap-space-xs px-space-sm py-1.5 rounded-lg bg-primary-container text-on-primary text-body-sm font-semibold hover:bg-surface-canvas hover:text-text-primary transition-all" onclick="copyCurrentCode()">
+<span class="material-symbols-outlined text-[16px]">copy_all</span>
+<span>Copier le kit</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- RÉFÉRENTIEL TECHNIQUE EN CARTES MINIMALISTES -->
+<section class="w-full bg-surface-subtle py-space-3xl">
+<div class="w-full max-w-[1280px] mx-auto px-margin flex flex-col gap-space-2xl">
+<!-- Section Header -->
+<div class="flex flex-col items-start gap-space-xs max-w-xl">
+<span class="font-label-eyebrow text-label-eyebrow text-secondary uppercase tracking-widest">Référentiel technique</span>
+<h2 class="font-headline-lg text-headline-lg text-text-primary">
+          Ce que CharteForge automatise pour chaque marque
+        </h2>
+<p class="font-body-md text-body-md text-text-secondary">
+          Toutes les spécifications graphiques et valeurs d'accessibilité sont déterministes, calculées côté serveur à partir de vos fichiers sources et livrées prêtes pour l'impression comme pour le développement front-end.
+        </p>
+</div>
+<!-- 4 Technical Pillar Cards -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-gutter">
+<!-- Pillar 01 -->
+<div class="bg-surface-canvas p-space-xl rounded-xl shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between gap-space-md">
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-center gap-space-xs text-text-muted font-label-eyebrow text-label-eyebrow uppercase">
+<span class="material-symbols-outlined text-secondary text-[18px]">input</span>
+<span>Formats d'entrée acceptés</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-text-primary">
+              Logos vectoriels &amp; typographies
+            </h3>
+<p class="font-body-md text-body-md text-text-secondary">
+              Logos <span class="font-semibold text-text-primary">SVG</span> (assainis automatiquement), <span class="font-semibold text-text-primary">PNG, JPG</span> et <span class="font-semibold text-text-primary">WebP</span> jusqu'à 10 Mo ; polices <span class="font-semibold text-text-primary">TTF, OTF, WOFF2</span> et Google Fonts.
+            </p>
+</div>
+<div class="flex flex-wrap gap-space-xs">
+<span class="px-space-xs py-space-xxs rounded bg-surface-muted font-label-token text-label-token text-text-secondary">SVG Clean 1.1</span>
+<span class="px-space-xs py-space-xxs rounded bg-surface-muted font-label-token text-label-token text-text-secondary">TrueType / OpenType</span>
+<span class="px-space-xs py-space-xxs rounded bg-surface-muted font-label-token text-label-token text-text-secondary">Google Fonts API</span>
+</div>
+</div>
+<!-- Pillar 02 -->
+<div class="bg-surface-canvas p-space-xl rounded-xl shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between gap-space-md">
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-center gap-space-xs text-text-muted font-label-eyebrow text-label-eyebrow uppercase">
+<span class="material-symbols-outlined text-secondary text-[18px]">colorize</span>
+<span>Calculs chromatiques &amp; WCAG</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-text-primary">
+              Profils colorimétriques de haute fidélité
+            </h3>
+<p class="font-body-md text-body-md text-text-secondary">
+              Conversions <span class="font-semibold text-text-primary">HEX, RGB, HSL, CMJN</span>, échelles de nuances <span class="font-semibold text-text-primary">100–900</span>, 2 dégradés signatures et matrice <span class="font-semibold text-text-primary">WCAG 2.1 AA (4,5:1) / AAA (7,0:1)</span>.
+            </p>
+</div>
+<div class="flex flex-wrap gap-space-xs">
+<span class="px-space-xs py-space-xxs rounded bg-surface-muted font-label-token text-label-token text-text-secondary">Coated FOGRA39</span>
+<span class="px-space-xs py-space-xxs rounded bg-surface-muted font-label-token text-label-token text-text-secondary">sRGB IEC61966-2.1</span>
+<span class="px-space-xs py-space-xxs rounded bg-wcag-pass-subtle font-label-token text-label-token text-wcag-pass">Double AA / Triple AAA</span>
+</div>
+</div>
+<!-- Pillar 03 -->
+<div class="bg-surface-canvas p-space-xl rounded-xl shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between gap-space-md">
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-center gap-space-xs text-text-muted font-label-eyebrow text-label-eyebrow uppercase">
+<span class="material-symbols-outlined text-secondary text-[18px]">collections_bookmark</span>
+<span>Livrables document &amp; code</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-text-primary">
+              PDF Print &amp; Kit de Tokens Front-end
+            </h3>
+<p class="font-body-md text-body-md text-text-secondary">
+<span class="font-semibold text-text-primary">PDF A4</span> (paysage ou portrait, jusqu'à <span class="font-semibold text-text-primary">18 chapitres</span> en français ou en anglais) et archive ZIP avec tokens.css, tailwind.config.js et brand.json.
+            </p>
+</div>
+<div class="flex flex-wrap gap-space-xs">
+<span class="px-space-xs py-space-xxs rounded bg-surface-muted font-label-token text-label-token text-text-secondary">Chromium 300 DPI</span>
+<span class="px-space-xs py-space-xxs rounded bg-surface-muted font-label-token text-label-token text-text-secondary">W3C Design Tokens Spec</span>
+<span class="px-space-xs py-space-xxs rounded bg-surface-muted font-label-token text-label-token text-text-secondary">Vector Assets Package</span>
+</div>
+</div>
+<!-- Pillar 04 -->
+<div class="bg-surface-canvas p-space-xl rounded-xl shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between gap-space-md">
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-center gap-space-xs text-text-muted font-label-eyebrow text-label-eyebrow uppercase">
+<span class="material-symbols-outlined text-secondary text-[18px]">payments</span>
+<span>Modèle tarifaire transparent</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-text-primary">
+              Gratuit pour démarrer, Pro à 5 €/mois
+            </h3>
+<p class="font-body-md text-body-md text-text-secondary">
+<span class="font-semibold text-text-primary">Offre Gratuite (0 €/mois)</span> pour tester avec 1 charte enregistrée ; <span class="font-semibold text-text-primary">Offre Pro (5 €/mois)</span> pour des chartes illimitées, exports sans filigrane et liens de partage privés.
+            </p>
+</div>
+<div class="flex flex-wrap gap-space-xs">
+<span class="px-space-xs py-space-xxs rounded bg-surface-muted font-label-token text-label-token text-text-secondary">Sans engagement</span>
+<span class="px-space-xs py-space-xxs rounded bg-surface-muted font-label-token text-label-token text-text-secondary">Validation par email Brevo</span>
+<span class="px-space-xs py-space-xxs rounded bg-secondary-container/40 font-label-token text-label-token text-text-primary font-bold">5 € HT / mois</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- QUESTIONS FRÉQUENTES (FAQ Accordéon ultra-fluide) -->
+<section class="w-full max-w-[1280px] mx-auto px-margin py-space-3xl">
+<div class="flex flex-col gap-space-xl">
+<!-- FAQ Header -->
+<div class="flex flex-col items-start gap-space-xs max-w-xl">
+<span class="font-label-eyebrow text-label-eyebrow text-secondary uppercase tracking-widest">Questions fréquentes</span>
+<h2 class="font-headline-lg text-headline-lg text-text-primary">
+          Tout savoir sur la génération de charte graphique
+        </h2>
+<p class="font-body-md text-body-md text-text-secondary">
+          Réponses précises aux questions courantes des directeurs artistiques, freelances et développeurs.
+        </p>
+</div>
+<!-- FAQ Accordion List -->
+<div class="flex flex-col gap-space-sm max-w-4xl">
+<!-- FAQ Item 1 -->
+<div class="faq-item bg-surface-canvas rounded-xl shadow-sm p-space-md cursor-pointer transition-all hover:bg-surface-subtle" onclick="toggleFaq(this)">
+<div class="flex items-center justify-between gap-space-sm">
+<h3 class="font-headline-sm text-headline-sm text-text-primary">Qu’est-ce que CharteForge et à qui s’adresse la plateforme ?</h3>
+<span class="material-symbols-outlined text-text-muted transition-transform duration-200 faq-icon">expand_more</span>
+</div>
+<div class="faq-answer hidden pt-space-sm font-body-md text-body-md text-text-secondary leading-relaxed">
+            CharteForge est une plateforme SaaS destinée aux studios graphiques, freelances, agences et équipes produit qui souhaitent transformer un logo, des polices et une palette de couleurs en un brand book PDF complet de niveau agence et un kit de design tokens prêt pour le développement.
+          </div>
+</div>
+<!-- FAQ Item 2 -->
+<div class="faq-item bg-surface-canvas rounded-xl shadow-sm p-space-md cursor-pointer transition-all hover:bg-surface-subtle" onclick="toggleFaq(this)">
+<div class="flex items-center justify-between gap-space-sm">
+<h3 class="font-headline-sm text-headline-sm text-text-primary">Quels formats de logos et de polices sont acceptés ?</h3>
+<span class="material-symbols-outlined text-text-muted transition-transform duration-200 faq-icon">expand_more</span>
+</div>
+<div class="faq-answer hidden pt-space-sm font-body-md text-body-md text-text-secondary leading-relaxed">
+            Pour les logos, CharteForge accepte les fichiers SVG (recommandé pour le tracé vectoriel), PNG, JPG et WebP jusqu'à 10 Mo. Les SVG sont automatiquement assainis et les déclinaisons monochrome noir, négative blanc, sans baseline et monogramme sont générées automatiquement. Pour la typographie, vous pouvez importer vos fichiers TTF, OTF ou WOFF2 ou choisir parmi Google Fonts.
+          </div>
+</div>
+<!-- FAQ Item 3 -->
+<div class="faq-item bg-surface-canvas rounded-xl shadow-sm p-space-md cursor-pointer transition-all hover:bg-surface-subtle" onclick="toggleFaq(this)">
+<div class="flex items-center justify-between gap-space-sm">
+<h3 class="font-headline-sm text-headline-sm text-text-primary">Comment fonctionne le contrôle d’accessibilité des couleurs WCAG 2.1 ?</h3>
+<span class="material-symbols-outlined text-text-muted transition-transform duration-200 faq-icon">expand_more</span>
+</div>
+<div class="faq-answer hidden pt-space-sm font-body-md text-body-md text-text-secondary leading-relaxed">
+            Chaque couleur ajoutée (primaire, secondaire, accent, fond, surface, texte, succès, erreur, avertissement) reçoit ses valeurs HEX, RGB, HSL et CMJN indicatives ainsi que ses nuances de 100 à 900. CharteForge calcule en direct les ratios de contraste texte/fond selon les seuils WCAG AA (4,5:1) et AAA (7,0:1) et propose automatiquement une alternative plus lisible en cas de non-conformité.
+          </div>
+</div>
+<!-- FAQ Item 4 -->
+<div class="faq-item bg-surface-canvas rounded-xl shadow-sm p-space-md cursor-pointer transition-all hover:bg-surface-subtle" onclick="toggleFaq(this)">
+<div class="flex items-center justify-between gap-space-sm">
+<h3 class="font-headline-sm text-headline-sm text-text-primary">Que contient le pack livré lors de l’export ?</h3>
+<span class="material-symbols-outlined text-text-muted transition-transform duration-200 faq-icon">expand_more</span>
+</div>
+<div class="faq-answer hidden pt-space-sm font-body-md text-body-md text-text-secondary leading-relaxed">
+            Vous obtenez un document PDF A4 (paysage ou portrait) composé de 18 chapitres configurables en français ou en anglais (couverture, mission, logotype, zone d'exclusion, interdits, palette, accessibilité, typographie, composants UI, maquettes carte de visite et signature e-mail), accompagné d'une archive ZIP incluant tokens.css, tailwind.config.js, brand.json, vos logos déclinés et les polices WOFF2.
+          </div>
+</div>
+<!-- FAQ Item 5 -->
+<div class="faq-item bg-surface-canvas rounded-xl shadow-sm p-space-md cursor-pointer transition-all hover:bg-surface-subtle" onclick="toggleFaq(this)">
+<div class="flex items-center justify-between gap-space-sm">
+<h3 class="font-headline-sm text-headline-sm text-text-primary">Quelle est la différence entre l’offre Gratuite et l’offre Pro à 5 € / mois ?</h3>
+<span class="material-symbols-outlined text-text-muted transition-transform duration-200 faq-icon">expand_more</span>
+</div>
+<div class="faq-answer hidden pt-space-sm font-body-md text-body-md text-text-secondary leading-relaxed">
+            L'offre Gratuite (0 € / mois) permet de créer et enregistrer 1 charte graphique, d'accéder aux 18 sections, au contrôle WCAG et à l'export PDF avec un filigrane discret. L'offre Pro à 5 € / mois débloque un nombre illimité de chartes et de versions, l'export PDF haute fidélité sans filigrane, le pack ZIP complet des design tokens et les liens de partage privés avec date d'expiration.
+          </div>
+</div>
+<!-- FAQ Item 6 -->
+<div class="faq-item bg-surface-canvas rounded-xl shadow-sm p-space-md cursor-pointer transition-all hover:bg-surface-subtle" onclick="toggleFaq(this)">
+<div class="flex items-center justify-between gap-space-sm">
+<h3 class="font-headline-sm text-headline-sm text-text-primary">Comment tester un exemple concret de charte graphique générée ?</h3>
+<span class="material-symbols-outlined text-text-muted transition-transform duration-200 faq-icon">expand_more</span>
+</div>
+<div class="faq-answer hidden pt-space-sm font-body-md text-body-md text-text-secondary leading-relaxed">
+            Vous pouvez télécharger gratuitement le dossier PDF complet d'exemple « Aurelia Atelier » (18 pages A4 générées par le moteur Chromium de CharteForge) directement depuis la page d'accueil ou le pied de page, sans création de compte préalable.
+          </div>
+</div>
+</div>
+</div>
+</section>
+<!-- BANNER CTA FINAL HAUTE VISIBILITÉ -->
+<section class="w-full max-w-[1280px] mx-auto px-margin py-space-2xl">
+<div class="relative w-full rounded-2xl bg-surface-inverse text-on-primary p-space-xl sm:p-space-2xl shadow-xl overflow-hidden flex flex-col md:flex-row items-center justify-between gap-space-xl">
+<!-- Subtle Brand Radial Accents -->
+<div class="absolute -top-24 -left-24 w-80 h-80 rounded-full bg-secondary/15 blur-3xl pointer-events-none"></div>
+<div class="absolute -bottom-24 -right-24 w-80 h-80 rounded-full bg-primary-container/40 blur-3xl pointer-events-none"></div>
+<!-- Left Text -->
+<div class="relative z-10 flex flex-col gap-space-xs max-w-xl text-center md:text-left">
+<div class="flex items-center justify-center md:justify-start gap-space-xs">
+<span class="w-2 h-2 rounded-full bg-secondary"></span>
+<span class="font-label-eyebrow text-label-eyebrow uppercase tracking-widest text-secondary">Accès instantané</span>
+</div>
+<h2 class="font-headline-lg text-headline-lg font-bold text-on-primary">
+          Accédez au Studio CharteForge dès maintenant
+        </h2>
+<p class="font-body-md text-body-md text-on-tertiary-container">
+          Connectez-vous avec Google ou créez un compte par e-mail (validation instantanée via Brevo) pour ouvrir le Studio, enregistrer vos chartes et générer votre premier PDF.
+        </p>
+</div>
+<!-- Right CTAs -->
+<div class="relative z-10 flex flex-col sm:flex-row items-center gap-space-md shrink-0">
+<a class="h-11 px-space-md rounded-lg font-body-sm text-body-sm font-semibold text-on-primary hover:bg-tertiary-container transition-all flex items-center justify-center" href="#">
+          Voir les tarifs
+        </a>
+<a class="h-11 px-space-lg rounded-lg bg-surface-canvas text-surface-inverse font-headline-sm text-body-md font-bold shadow-md hover:bg-surface-subtle hover:scale-[1.02] active:scale-100 transition-all flex items-center justify-center" href="#">
+          Se connecter / Créer un compte
+        </a>
+</div>
+</div>
+</section>
+</div>
+<!-- CLIENT JAVASCRIPT MICRO-INTERACTIONS -->
+<script>
+  // Toast Alert Notification Handler
+  function triggerToast(message) {
+    const toast = document.getElementById('toast-notification');
+    const toastText = document.getElementById('toast-text');
+    if (!toast || !toastText) return;
+    
+    toastText.innerText = message;
+    toast.classList.remove('translate-y-20', 'opacity-0');
+    toast.classList.add('translate-y-0', 'opacity-100');
+    
+    setTimeout(() => {
+      toast.classList.remove('translate-y-0', 'opacity-100');
+      toast.classList.add('translate-y-20', 'opacity-0');
+    }, 2800);
+  }
+
+  // Token Copy Handler
+  function copyToken(text) {
+    if (navigator.clipboard) {
+      navigator.clipboard.writeText(text);
+    }
+    triggerToast('Valeur copiée : ' + text);
+  }
+
+  // Code Terminal Tab Switcher
+  function switchTokenTab(tabKey) {
+    const tabs = ['css', 'tailwind', 'json'];
+    tabs.forEach(tab => {
+      const btn = document.getElementById('tab-' + tab);
+      const code = document.getElementById('code-' + tab);
+      if (tab === tabKey) {
+        btn.className = "px-space-xs py-1 rounded text-label-token font-label-token bg-primary-container text-on-primary font-bold shadow-xs";
+        code.classList.remove('hidden');
+      } else {
+        btn.className = "px-space-xs py-1 rounded text-label-token font-label-token text-text-muted hover:text-on-primary transition-colors";
+        code.classList.add('hidden');
+      }
+    });
+  }
+
+  // Copy Full Kit from IDE
+  function copyCurrentCode() {
+    let activeCode = '';
+    if (!document.getElementById('code-css').classList.contains('hidden')) {
+      activeCode = document.getElementById('code-css').innerText;
+    } else if (!document.getElementById('code-tailwind').classList.contains('hidden')) {
+      activeCode = document.getElementById('code-tailwind').innerText;
+    } else {
+      activeCode = document.getElementById('code-json').innerText;
+    }
+    if (navigator.clipboard) {
+      navigator.clipboard.writeText(activeCode);
+    }
+    triggerToast('Kit de design tokens copié dans le presse-papier !');
+  }
+
+  // FAQ Accordion Interaction
+  function toggleFaq(itemElement) {
+    const answer = itemElement.querySelector('.faq-answer');
+    const icon = itemElement.querySelector('.faq-icon');
+    const isHidden = answer.classList.contains('hidden');
+    
+    // Close other FAQs
+    document.querySelectorAll('.faq-answer').forEach(el => el.classList.add('hidden'));
+    document.querySelectorAll('.faq-icon').forEach(el => el.style.transform = 'rotate(0deg)');
+    
+    if (isHidden) {
+      answer.classList.remove('hidden');
+      icon.style.transform = 'rotate(180deg)';
+    }
+  }
+</script></main><footer class="w-full bg-surface-canvas shadow-[0_-1px_8px_rgba(15,23,42,0.03)] py-space-xl"><div class="w-full max-w-[1280px] mx-auto px-margin flex flex-col md:flex-row items-center justify-between gap-space-lg"><div class="flex items-center gap-space-sm"><img alt="CharteForge Logo" class="h-6 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/ALJJyrA1a7D7NQhlFeFudHElCJu6_356lVeVRxXdj7n2g24LSzd8ie_C40FCu2f2HMy_KnmLRCnXdVXlabapvblW72Hb-Wgq4KpmK4VQZf7aIyCsx5TyreY7r4aXuRO3BVhzvbRdOC7o80ER2rE6P8BwgzaiRwaqlawFNjPLrwy3aev6mjg9WO8ZfsbVD1GTZfrFWAH27WgR8T6OaBnDV-YgaGegAilVa92DF2BZoKcbcl7a4A"/><span class="font-label-code text-label-code text-text-primary font-bold">CharteForge</span><span class="font-caption text-caption text-text-muted">Studio Engine</span></div><div class="flex items-center gap-space-sm"><span class="font-label-eyebrow text-label-eyebrow uppercase text-text-muted">Export Tokens :</span><a class="font-label-code text-label-code text-text-secondary hover:text-text-primary bg-surface-muted px-space-xs py-space-xxs rounded transition-colors" href="#">tokens.css</a><a class="font-label-code text-label-code text-text-secondary hover:text-text-primary bg-surface-muted px-space-xs py-space-xxs rounded transition-colors" href="#">tailwind.config.js</a><a class="font-label-code text-label-code text-text-secondary hover:text-text-primary bg-surface-muted px-space-xs py-space-xxs rounded transition-colors" href="#">brand.json</a></div><div class="font-caption text-caption text-text-muted">© 2025 CharteForge SAS. Tous droits réservés.</div></div></footer></body></html>

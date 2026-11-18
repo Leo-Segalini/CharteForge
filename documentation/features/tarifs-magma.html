@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tarifs Magma Soft — CharteForge</title>
+  <link rel="stylesheet" href="../assets/styles.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Aller au contenu</a>
+  <div class="layout">
+    <nav class="sidebar" aria-label="Navigation documentation">
+      <p><strong>CharteForge Docs</strong></p>
+      <a href="../index.html">Accueil</a>
+      <a href="../changelog.html">Changelog</a>
+      <a href="tarifs-magma.html" aria-current="page">Tarifs Magma</a>
+    </nav>
+    <main class="content" id="main-content">
+      <header>
+        <h1>Page Tarifs — Hero Magma Soft</h1>
+        <div class="meta">
+          <span class="badge">v0.1.0</span>
+          <span>Mis à jour le 18 novembre 2026</span>
+          <span class="badge">Stable</span>
+        </div>
+      </header>
+
+      <section>
+        <h2>Description</h2>
+        <p>
+          Refonte de <code>BillingView</code> : composition hero Magma Soft
+          (badge, titre expressif, halo soft), cartes Free / Pro avec coins
+          <code>1.5rem</code> (plus de pills géantes), Pro mise en avant
+          (bordure violet, badge « Recommandé », CTA primaire).
+        </p>
+      </section>
+
+      <section>
+        <h2>Cas d’usage</h2>
+        <ul>
+          <li>Visiteur non connecté → CTA « Se connecter et activer Pro »</li>
+          <li>Compte Free → checkout Stripe</li>
+          <li>Compte Pro → badge Actif + option retour Gratuit</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Fichiers</h2>
+        <table>
+          <thead>
+            <tr><th>Fichier</th><th>Rôle</th><th>Action</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>src/components/BillingView.tsx</code></td>
+              <td>UI tarifs + checkout / downgrade</td>
+              <td>Modifié</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section>
+        <h2>Accessibilité</h2>
+        <ul>
+          <li>Titres <code>h1</code> / <code>h2</code> liés via <code>aria-labelledby</code></li>
+          <li>Messages facturation en <code>role="status"</code> + <code>aria-live</code></li>
+          <li>Respect <code>prefers-reduced-motion</code></li>
+          <li>Zones tactiles CTA ≥ 44 px (<code>Button</code> size lg)</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Sécurité</h2>
+        <ul>
+          <li>Checkout / downgrade toujours via API authentifiée Bearer</li>
+          <li>Aucun secret Stripe côté client</li>
+        </ul>
+      </section>
+    </main>
+  </div>
+</body>
+</html>

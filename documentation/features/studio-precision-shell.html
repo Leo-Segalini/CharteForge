@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Studio Precision Shell — CharteForge</title>
+  <link rel="stylesheet" href="../assets/styles.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Aller au contenu</a>
+  <div class="layout">
+    <nav class="sidebar" aria-label="Navigation documentation">
+      <p><strong>CharteForge Docs</strong></p>
+      <a href="../index.html">Accueil</a>
+      <a href="../changelog.html">Changelog</a>
+      <a href="deps-github-pages.html">Deps &amp; Pages</a>
+      <a href="studio-precision-shell.html" aria-current="page">Studio Precision</a>
+    </nav>
+    <main class="content" id="main-content">
+      <h1>Refonte Studio Precision (Landing + shell)</h1>
+      <div class="meta">
+        <span class="badge badge-ok">Stable</span>
+        <span>18 novembre 2026</span>
+        <span class="badge">v0.1.0</span>
+      </div>
+
+      <section>
+        <h2>Description</h2>
+        <p>
+          Application du design system <strong>Studio Precision</strong>
+          (<code>refontedesign/</code>) à la landing et au shell produit
+          (Auth, Dashboard, Billing, Admin, chrome App). Les étapes Studio 1–6
+          et le renderer PDF client restent hors scope.
+        </p>
+      </section>
+
+      <section>
+        <h2>Cas d’usage</h2>
+        <ul>
+          <li>Landing fidèle à la maquette (hero specimen, 6 étapes, WCAG, tokens, FAQ)</li>
+          <li>UI plateforme cohérente navy / ochre / hairline</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Fichiers</h2>
+        <table>
+          <thead>
+            <tr><th>Fichier</th><th>Rôle</th><th>Action</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><code>src/index.css</code></td><td>Tokens @theme Tailwind v4</td><td><span class="badge">Modifié</span></td></tr>
+            <tr><td><code>src/components/ui/*</code></td><td>Button, Badge, Card, Input</td><td><span class="badge">Créé</span></td></tr>
+            <tr><td><code>src/components/LandingPage.tsx</code></td><td>Port maquette</td><td><span class="badge">Modifié</span></td></tr>
+            <tr><td><code>src/App.tsx</code> + Auth/Dashboard/Billing/Admin</td><td>Shell produit</td><td><span class="badge">Modifié</span></td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section>
+        <h2>Sécurité</h2>
+        <ul>
+          <li>✅ Aucun secret ajouté</li>
+          <li>✅ Pas de changement des flux auth / API</li>
+          <li>✅ Focus visible et cibles tactiles ≥ 44px sur CTAs principaux</li>
+        </ul>
+      </section>
+    </main>
+  </div>
+</body>
+</html>

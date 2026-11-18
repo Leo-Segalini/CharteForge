@@ -1,25 +1,105 @@
 @import "tailwindcss";
 
-@layer base {
-  :root {
-    --font-sans: 'Public Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-    --font-display: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-    --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, monospace;
-  }
+@theme {
+  --color-surface: #fafaf8;
+  --color-surface-canvas: #ffffff;
+  --color-surface-subtle: #f4f4f1;
+  --color-surface-muted: #eeeeea;
+  --color-surface-card: #ffffff;
+  --color-surface-inverse: #1d1d31;
+  --color-surface-lavender: #f5f1ff;
 
+  --color-text-primary: #1d1d31;
+  --color-text-secondary: #626273;
+  --color-text-muted: #9a98a4;
+  --color-on-primary: #ffffff;
+
+  --color-violet: #6559f5;
+  --color-violet-deep: #6257f6;
+  --color-violet-soft: #ece9fe;
+  --color-primary: #6559f5;
+  --color-primary-container: #6559f5;
+  --color-on-primary-container: #ffffff;
+
+  --color-ink: #1d1d31;
+  --color-coral: #ff7a59;
+  --color-gold: #ffd66b;
+  --color-secondary: #ff7a59;
+  --color-secondary-ochre: #ff7a59;
+
+  --color-border-hairline: #e8e7e2;
+  --color-border-subtle: #f0efeb;
+  --color-border-dark: #2a2a3d;
+
+  --color-wcag-pass: #059669;
+  --color-wcag-pass-subtle: #ecfdf5;
+  --color-wcag-warning: #d97706;
+  --color-wcag-warning-subtle: #fffbeb;
+  --color-wcag-fail: #e11d48;
+  --color-wcag-fail-subtle: #fff1f2;
+
+  --color-error: #e11d48;
+  --color-on-error: #ffffff;
+  --color-error-container: #ffe4e8;
+  --color-on-error-container: #8b1030;
+
+  --color-tertiary-container: #2a2a3d;
+  --color-on-tertiary-container: #b8b6c4;
+
+  --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+  --font-display-demo: "Outfit", var(--font-sans);
+  --font-serif-demo: "DM Serif Display", Georgia, serif;
+  --font-grotesk-demo: "Space Grotesk", var(--font-sans);
+
+  --radius-sm: 0.5rem;
+  --radius-DEFAULT: 0.75rem;
+  --radius-md: 1rem;
+  --radius-lg: 1.5rem;
+  --radius-xl: 2rem;
+  --radius-full: 9999px;
+
+  --shadow-micro: 0 1px 2px rgb(29 29 49 / 0.04), 0 8px 24px rgb(29 29 49 / 0.04);
+  --shadow-overlay: 0 16px 40px -8px rgb(29 29 49 / 0.12), 0 4px 12px rgb(29 29 49 / 0.06);
+}
+
+@layer base {
   body {
     font-family: var(--font-sans);
-    background-color: #F8F9FB;
-    color: #0F172A;
+    background-color: var(--color-surface);
+    color: var(--color-text-primary);
+    -webkit-font-smoothing: antialiased;
   }
 
-  h1, h2, h3, h4 {
-    font-family: var(--font-display);
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-sans);
+    letter-spacing: -0.03em;
   }
 
-  code, pre, .font-mono {
+  code,
+  pre,
+  .font-mono {
     font-family: var(--font-mono);
     font-variant-numeric: tabular-nums;
+  }
+
+  ::selection {
+    background-color: var(--color-violet-soft);
+    color: var(--color-text-primary);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
   }
 }
 
@@ -34,4 +114,24 @@
   to {
     transform: scaleX(1);
   }
+}
+
+.shadow-micro {
+  box-shadow: var(--shadow-micro);
+}
+
+.shadow-overlay {
+  box-shadow: var(--shadow-overlay);
+}
+
+.font-outfit {
+  font-family: var(--font-display-demo);
+}
+
+.font-dm-serif {
+  font-family: var(--font-serif-demo);
+}
+
+.font-space-grotesk {
+  font-family: var(--font-grotesk-demo);
 }

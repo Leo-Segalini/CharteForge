@@ -6,10 +6,13 @@ import type {
   FontRole,
   TypeScalePreset,
 } from '../../shared/types.ts';
+import { buildTypeScalePreset } from '../../shared/brandbook/sections.ts';
 import {
-  buildTypeScalePreset,
   GOOGLE_FONTS_CATALOG,
-} from '../../shared/brandbook/sections.ts';
+  guessFallback,
+  type GoogleFontEntry,
+} from '../../shared/googleFontsCatalog.ts';
+import { GoogleFontPicker } from '../GoogleFontPicker.tsx';
 
 interface Props {
   brand: BrandBookData;
@@ -80,8 +83,8 @@ export function Step4Fonts({ brand, onChange }: Props) {
     }
   };
 
-  const assignGoogleFont = (role: FontRole, family: string) => {
-    const cat = GOOGLE_FONTS_CATALOG.find((g) => g.family === family);
+  const assignGoogleFont = (role: FontRole, family: string, entry?: GoogleFontEntry) => {
+    const cat = entry ?? GOOGLE_FONTS_CATALOG.find((g) => g.family === family);
     onChange((prev) => ({
       ...prev,
       fonts: [
@@ -91,21 +94,12 @@ export function Step4Fonts({ brand, onChange }: Props) {
           role,
           source: 'google',
           weights: cat?.weights ?? ['400', '600', '700'],
-          fallback:
-            role === 'mono'
-              ? 'monospace'
-              : family.includes('Fraunces') ||
-                  family.includes('Playfair') ||
-                  family.includes('Lora') ||
-                  family.includes('Cormorant') ||
-                  family.includes('Source Serif')
-                ? 'Georgia, serif'
-                : 'sans-serif',
+          fallback: guessFallback(family, role),
           coverage: {
             frenchAccents: true,
             euroSymbol: true,
             frenchQuotes: true,
-            tabularDigits: true,
+            tabularDigits: role === 'mono',
             glyphCount: 600,
             isVariable: true,
             variableAxes: ['wght'],
@@ -162,12 +156,12 @@ export function Step4Fonts({ brand, onChange }: Props) {
     <div className="space-y-8">
       {uploadedFaceCss && <style>{uploadedFaceCss}</style>}
 
-      <div className="border-b border-slate-200 pb-5">
-        <h2 className="text-xl font-semibold text-slate-900">
+      <div className="border-b border-border-hairline pb-5">
+        <h2 className="text-xl font-semibold text-text-primary">
           04. Polices typographiques & échelle de corps
         </h2>
-        <p className="mt-1 text-sm text-slate-600">
-          Importez vos fichiers TTF, OTF, WOFF ou WOFF2 (convertis en WOFF2 et embarqués dans le PDF) ou sélectionnez des polices Google Fonts.
+        <p className="mt-1 text-sm text-text-secondary">
+          Importez vos fichiers TTF, OTF, WOFF ou WOFF2, ou recherchez parmi {GOOGLE_FONTS_CATALOG.length} Google Fonts avec aperçu live.
         </p>
       </div>
 
@@ -267,21 +261,14 @@ export function Step4Fonts({ brand, onChange }: Props) {
                       {assigned?.family ?? 'Non définie'}
                     </div>
                   </div>
-                  <select
-                    aria-label={`Choisir Google Font pour ${role}`}
-                    value={assigned?.source === 'google' ? assigned.family : ''}
-                    onChange={(e) => {
-                      if (e.target.value) assignGoogleFont(role, e.target.value);
-                    }}
-                    className="rounded-lg border border-slate-200 bg-white px-3 py-1.5 text-xs font-medium text-slate-700"
-                  >
-                    <option value="">Choisir dans Google Fonts…</option>
-                    {GOOGLE_FONTS_CATALOG.map((gf) => (
-                      <option key={gf.family} value={gf.family}>
-                        {gf.family} ({gf.category})
-                      </option>
-                    ))}
-                  </select>
+                  <GoogleFontPicker
+                    roleLabel={ROLE_LABELS[role]}
+                    roleHint={role}
+                    selectedFamily={
+                      assigned?.source === 'google' ? assigned.family : undefined
+                    }
+                    onSelect={(family, entry) => assignGoogleFont(role, family, entry)}
+                  />
                 </div>
 
                 {assigned && (

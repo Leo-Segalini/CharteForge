@@ -107,7 +107,7 @@ export function AuthView({
       transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
       className="mx-auto max-w-md py-6"
     >
-      <div className="rounded-xl border border-slate-200 bg-white p-8">
+      <div className="rounded-[1.5rem] border border-border-hairline bg-surface-canvas p-8 shadow-micro">
         <div className="mb-6 flex flex-col items-start gap-2">
           <BrandLogo size="sm" />
           <AnimatePresence mode="wait">
@@ -118,12 +118,12 @@ export function AuthView({
               exit={{ opacity: 0, y: -6 }}
               transition={{ duration: 0.2 }}
             >
-              <h1 className="mt-2 text-2xl font-bold tracking-tight text-slate-900">
+              <h1 className="mt-2 text-2xl font-bold tracking-tight text-text-primary">
                 {mode === 'login'
                   ? 'Accéder à votre studio'
                   : 'Créer un compte CharteForge'}
               </h1>
-              <p className="mt-1 text-sm text-slate-600">
+              <p className="mt-1 text-sm text-text-secondary">
                 {mode === 'login'
                   ? 'Connectez-vous pour ouvrir le Studio, enregistrer vos chartes et exporter vos PDF.'
                   : 'Créez votre espace gratuit avec validation d’adresse e-mail par Brevo ou via Google.'}
@@ -134,7 +134,7 @@ export function AuthView({
 
         {verificationNotice && (
           <div
-            className={`mb-5 rounded-lg border px-4 py-3 text-xs leading-relaxed ${
+            className={`mb-5 rounded-full border px-4 py-3 text-xs leading-relaxed ${
               verificationNotice.status === 'error'
                 ? 'border-red-200 bg-red-50 text-red-900'
                 : 'border-emerald-200 bg-emerald-50 text-emerald-900'
@@ -156,7 +156,7 @@ export function AuthView({
         )}
 
         {/* Mode Switcher */}
-        <div className="mb-5 grid grid-cols-2 rounded-lg bg-slate-100 p-1">
+        <div className="mb-5 grid grid-cols-2 rounded-2xl bg-surface-muted p-1">
           <button
             type="button"
             onClick={() => {
@@ -166,15 +166,15 @@ export function AuthView({
             }}
             className={`relative rounded-md py-2 text-xs font-semibold transition-colors ${
               mode === 'login'
-                ? 'text-slate-900'
-                : 'text-slate-600 hover:text-slate-900'
+                ? 'text-text-primary'
+                : 'text-text-secondary hover:text-text-primary'
             }`}
           >
             {mode === 'login' && (
               <motion.span
                 layoutId="auth-mode-pill"
                 transition={{ type: 'spring', stiffness: 420, damping: 34 }}
-                className="absolute inset-0 rounded-md bg-white shadow-xs"
+                className="absolute inset-0 rounded-md bg-surface-canvas shadow-sm"
               />
             )}
             <span className="relative z-10">Connexion</span>
@@ -188,15 +188,15 @@ export function AuthView({
             }}
             className={`relative rounded-md py-2 text-xs font-semibold transition-colors ${
               mode === 'register'
-                ? 'text-slate-900'
-                : 'text-slate-600 hover:text-slate-900'
+                ? 'text-text-primary'
+                : 'text-text-secondary hover:text-text-primary'
             }`}
           >
             {mode === 'register' && (
               <motion.span
                 layoutId="auth-mode-pill"
                 transition={{ type: 'spring', stiffness: 420, damping: 34 }}
-                className="absolute inset-0 rounded-md bg-white shadow-xs"
+                className="absolute inset-0 rounded-md bg-surface-canvas shadow-sm"
               />
             )}
             <span className="relative z-10">Créer un compte</span>
@@ -208,7 +208,7 @@ export function AuthView({
           type="button"
           disabled={googleLoading}
           onClick={() => void handleGoogle()}
-          className="flex w-full items-center justify-center gap-2.5 rounded-lg border border-slate-300 bg-white px-4 py-2.5 text-sm font-medium text-slate-800 transition-colors hover:bg-slate-50 disabled:opacity-50"
+          className="flex w-full items-center justify-center gap-2.5 rounded-full border border-border-hairline bg-surface-canvas px-4 py-2.5 text-sm font-medium text-text-primary transition-colors hover:bg-surface-subtle disabled:opacity-50"
         >
           <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true">
             <path
@@ -232,36 +232,36 @@ export function AuthView({
         </button>
 
         <div className="my-5 flex items-center gap-3">
-          <div className="h-px flex-1 bg-slate-200" />
-          <span className="text-[11px] font-medium text-slate-400">
+          <div className="h-px flex-1 bg-border-hairline" />
+          <span className="text-[11px] font-medium text-text-muted">
             ou avec votre e-mail
           </span>
-          <div className="h-px flex-1 bg-slate-200" />
+          <div className="h-px flex-1 bg-border-hairline" />
         </div>
 
         {/* Pending Email Verification Box */}
         {pendingEmail && infoMsg ? (
-          <div className="space-y-4 rounded-lg border border-slate-200 bg-slate-50 p-5 text-sm">
+          <div className="space-y-4 rounded-full border border-border-hairline bg-surface-subtle p-5 text-sm">
             <div className="flex items-start gap-3">
-              <Mail className="mt-0.5 h-5 w-5 shrink-0 text-slate-700" />
+              <Mail className="mt-0.5 h-5 w-5 shrink-0 text-text-secondary" />
               <div>
-                <div className="font-semibold text-slate-900">
+                <div className="font-semibold text-text-primary">
                   Validation requise par e-mail
                 </div>
-                <p className="mt-1 text-xs leading-relaxed text-slate-600">
+                <p className="mt-1 text-xs leading-relaxed text-text-secondary">
                   {infoMsg}
                 </p>
-                <p className="mt-2 font-mono text-xs text-slate-700">
+                <p className="mt-2 font-mono text-xs text-text-secondary">
                   {pendingEmail}
                 </p>
               </div>
             </div>
-            <div className="flex flex-wrap items-center justify-between gap-2 pt-2 border-t border-slate-200">
+            <div className="flex flex-wrap items-center justify-between gap-2 pt-2 border-t border-border-hairline">
               <button
                 type="button"
                 disabled={resending}
                 onClick={() => void handleResend(pendingEmail)}
-                className="inline-flex items-center gap-1.5 text-xs font-semibold text-slate-900 hover:underline disabled:opacity-50"
+                className="inline-flex items-center gap-1.5 text-xs font-semibold text-text-primary hover:underline disabled:opacity-50"
               >
                 <RefreshCw className="h-3.5 w-3.5" />
                 {resending ? 'Envoi…' : 'Renvoyer l’e-mail'}
@@ -273,7 +273,7 @@ export function AuthView({
                   setInfoMsg(null);
                   setMode('login');
                 }}
-                className="text-xs font-medium text-slate-600 hover:text-slate-900"
+                className="text-xs font-medium text-text-secondary hover:text-text-primary"
               >
                 Retour à la connexion
               </button>
@@ -283,7 +283,7 @@ export function AuthView({
           <form onSubmit={(e) => void handleSubmit(e)} className="space-y-4">
             {mode === 'register' && (
               <div>
-                <label className="mb-1.5 block text-xs font-medium text-slate-700">
+                <label className="mb-1.5 block text-xs font-medium text-text-secondary">
                   Nom ou studio (optionnel)
                 </label>
                 <input
@@ -291,13 +291,13 @@ export function AuthView({
                   value={displayName}
                   onChange={(e) => setDisplayName(e.target.value)}
                   placeholder="Ex. Atelier Horizon"
-                  className="w-full rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm text-slate-900 focus:border-slate-900 focus:outline-none"
+                  className="w-full rounded-full border border-border-hairline bg-surface-canvas px-3 py-2 text-sm text-text-primary focus:border-violet focus:outline-none"
                 />
               </div>
             )}
 
             <div>
-              <label className="mb-1.5 block text-xs font-medium text-slate-700">
+              <label className="mb-1.5 block text-xs font-medium text-text-secondary">
                 Adresse e-mail
               </label>
               <input
@@ -307,12 +307,12 @@ export function AuthView({
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="nom@entreprise.fr"
-                className="w-full rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm text-slate-900 focus:border-slate-900 focus:outline-none"
+                className="w-full rounded-full border border-border-hairline bg-surface-canvas px-3 py-2 text-sm text-text-primary focus:border-violet focus:outline-none"
               />
             </div>
 
             <div>
-              <label className="mb-1.5 block text-xs font-medium text-slate-700">
+              <label className="mb-1.5 block text-xs font-medium text-text-secondary">
                 Mot de passe {mode === 'register' && '(8 caractères minimum)'}
               </label>
               <div className="relative">
@@ -324,13 +324,13 @@ export function AuthView({
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   placeholder="••••••••"
-                  className="w-full rounded-lg border border-slate-200 bg-white py-2 pl-3 pr-10 text-sm text-slate-900 focus:border-slate-900 focus:outline-none"
+                  className="w-full rounded-full border border-border-hairline bg-surface-canvas py-2 pl-3 pr-10 text-sm text-text-primary focus:border-violet focus:outline-none"
                 />
                 <button
                   type="button"
                   onClick={() => setShowPassword((v) => !v)}
                   aria-label="Afficher ou masquer le mot de passe"
-                  className="absolute right-2.5 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-700"
+                  className="absolute right-2.5 top-1/2 -translate-y-1/2 text-text-muted hover:text-text-secondary"
                 >
                   {showPassword ? (
                     <EyeOff className="h-4 w-4" />
@@ -342,7 +342,7 @@ export function AuthView({
             </div>
 
             {(formError || authError) && (
-              <div className="rounded-lg border border-red-200 bg-red-50 px-3.5 py-2.5 text-xs text-red-800">
+              <div className="rounded-full border border-red-200 bg-red-50 px-3.5 py-2.5 text-xs text-red-800">
                 <p>{formError || authError}</p>
                 {pendingEmail && mode === 'login' && (
                   <button
@@ -361,7 +361,7 @@ export function AuthView({
             <button
               type="submit"
               disabled={submitting}
-              className="w-full rounded-lg bg-slate-900 px-4 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-slate-800 disabled:opacity-50"
+              className="w-full rounded-full bg-violet px-4 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-ink disabled:opacity-50"
             >
               {submitting
                 ? 'Traitement…'
@@ -373,12 +373,12 @@ export function AuthView({
         )}
 
         {onGoToPricing && (
-          <div className="mt-6 border-t border-slate-100 pt-4 text-center text-xs text-slate-500">
+          <div className="mt-6 border-t border-border-subtle pt-4 text-center text-xs text-text-muted">
             Consultez nos formules Gratuite et Pro sur la page{' '}
             <button
               type="button"
               onClick={onGoToPricing}
-              className="font-semibold text-slate-900 underline"
+              className="font-semibold text-text-primary underline"
             >
               Tarifs
             </button>

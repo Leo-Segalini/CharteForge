@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Magma Soft — CharteForge</title>
+  <link rel="stylesheet" href="../assets/styles.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Aller au contenu</a>
+  <div class="layout">
+    <nav class="sidebar" aria-label="Navigation documentation">
+      <p><strong>CharteForge Docs</strong></p>
+      <a href="../index.html">Accueil</a>
+      <a href="../changelog.html">Changelog</a>
+      <a href="magma-soft-site.html" aria-current="page">Magma Soft</a>
+    </nav>
+    <main class="content" id="main-content">
+      <h1>Design Magma Soft (site entier)</h1>
+      <div class="meta">
+        <span class="badge badge-ok">Stable</span>
+        <span>18 novembre 2026</span>
+      </div>
+      <section>
+        <h2>Description</h2>
+        <p>
+          Refonte UI basée sur
+          <a href="https://magma-robot-02080050.figma.site/">magma-robot-02080050.figma.site</a> :
+          violet <code>#6559F5</code>, fond <code>#FAFAF8</code>, pills, landing soft + shell produit.
+        </p>
+      </section>
+      <section>
+        <h2>Fichiers</h2>
+        <ul>
+          <li><code>src/index.css</code> — tokens Magma</li>
+          <li><code>src/components/LandingPage.tsx</code> — hero, atelier, méthode, exports</li>
+          <li><code>src/App.tsx</code> + Auth/Dashboard/Billing/Admin/BrandLogo</li>
+        </ul>
+      </section>
+      <section>
+        <h2>Sécurité</h2>
+        <ul>
+          <li>✅ Chat landing = démo UI (redirige vers auth)</li>
+          <li>✅ Aucun secret ajouté</li>
+        </ul>
+      </section>
+    </main>
+  </div>
+</body>
+</html>

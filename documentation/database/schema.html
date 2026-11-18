@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PostgreSQL local — CharteForge</title>
+  <link rel="stylesheet" href="../assets/styles.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Aller au contenu</a>
+  <div class="layout">
+    <nav class="sidebar" aria-label="Navigation documentation">
+      <p><strong>CharteForge Docs</strong></p>
+      <a href="../index.html">Accueil</a>
+      <a href="../changelog.html">Changelog</a>
+      <a href="schema.html" aria-current="page">PostgreSQL</a>
+    </nav>
+    <main class="content" id="main-content">
+      <header>
+        <h1>PostgreSQL local + Drizzle</h1>
+        <div class="meta">
+          <span class="badge">v0.1.0</span>
+          <span>Mis à jour le 18 novembre 2026</span>
+          <span class="badge">Stable</span>
+        </div>
+      </header>
+
+      <section>
+        <h2>Description</h2>
+        <p>
+          CharteForge stocke users, brands et assets dans PostgreSQL via Drizzle.
+          En local, un conteneur Docker expose Postgres sur le port <code>5434</code>
+          pour ne pas entrer en conflit avec une instance système sur <code>5432</code>.
+        </p>
+      </section>
+
+      <section>
+        <h2>Démarrage rapide</h2>
+        <ol>
+          <li>Copier <code>.env.example</code> → <code>.env</code> (variables <code>SQL_*</code>)</li>
+          <li><code>npm run db:up</code> — démarre <code>charteforge-postgres</code></li>
+          <li><code>npm run db:push</code> — crée les tables depuis <code>src/db/schema.ts</code></li>
+          <li><code>npm run dev</code> — serveur Express + Vite</li>
+        </ol>
+      </section>
+
+      <section>
+        <h2>Variables d’environnement</h2>
+        <table>
+          <thead>
+            <tr><th>Variable</th><th>Valeur locale</th><th>Rôle</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><code>SQL_HOST</code></td><td><code>127.0.0.1</code></td><td>Hôte Postgres</td></tr>
+            <tr><td><code>SQL_PORT</code></td><td><code>5434</code></td><td>Port hôte Docker</td></tr>
+            <tr><td><code>SQL_USER</code> / <code>SQL_PASSWORD</code></td><td><code>charteforge</code></td><td>Connexion app</td></tr>
+            <tr><td><code>SQL_DB_NAME</code></td><td><code>charteforge</code></td><td>Base</td></tr>
+            <tr><td><code>SQL_ADMIN_*</code></td><td>identique</td><td>drizzle-kit push</td></tr>
+          </tbody>
+        </table>
+        <p>
+          Sans <code>SQL_DB_NAME</code>, le driver <code>pg</code> utilise le nom d’utilisateur OS
+          comme base (ex. <code>segalini-briant</code>) → erreur « database does not exist ».
+        </p>
+      </section>
+
+      <section>
+        <h2>Fichiers</h2>
+        <table>
+          <thead>
+            <tr><th>Fichier</th><th>Rôle</th><th>Action</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><code>docker-compose.yml</code></td><td>Postgres 16 Alpine, volume, healthcheck</td><td>Créé</td></tr>
+            <tr><td><code>src/db/index.ts</code></td><td>Pool pg + <code>SQL_PORT</code></td><td>Modifié</td></tr>
+            <tr><td><code>src/db/drizzle.config.ts</code></td><td>Credentials + port pour push</td><td>Modifié</td></tr>
+            <tr><td><code>server.ts</code></td><td>Import <code>dotenv/config</code> corrigé</td><td>Modifié</td></tr>
+            <tr><td><code>.env.example</code></td><td>Variables SQL documentées</td><td>Modifié</td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section>
+        <h2>Sécurité</h2>
+        <ul>
+          <li>Mots de passe locaux uniquement dans <code>.env</code> (gitignoré)</li>
+          <li>Port non standard 5434 — pas d’exposition publique en local</li>
+          <li>Pas de secrets dans la doc ni dans <code>docker-compose.yml</code> (dev only)</li>
+        </ul>
+      </section>
+    </main>
+  </div>
+</body>
+</html>

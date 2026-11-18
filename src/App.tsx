@@ -308,8 +308,8 @@ function StudioShell() {
     return (
       <>
         <SeoHead routeKey="share" />
-        <div className="min-h-screen bg-[#F8F9FB]">
-          <header className="border-b border-slate-200 bg-white">
+        <div className="min-h-screen bg-surface">
+          <header className="border-b border-border-hairline bg-surface-canvas">
             <div className="mx-auto flex max-w-[1280px] items-center justify-between gap-8 px-6 py-4">
               <button
                 type="button"
@@ -321,14 +321,14 @@ function StudioShell() {
               >
                 <BrandLogo />
               </button>
-              <div className="text-xs text-slate-500">Partage privé en lecture seule</div>
+              <div className="text-xs text-text-muted">Partage privé en lecture seule</div>
               <button
                 type="button"
                 onClick={() => {
                   setShareToken(null);
                   window.history.replaceState({}, '', '/');
                 }}
-                className="rounded-lg bg-slate-900 px-4 py-2 text-xs font-medium text-white whitespace-nowrap shrink-0"
+                className="rounded-full bg-violet px-4 py-2 text-xs font-medium text-white whitespace-nowrap shrink-0"
               >
                 Découvrir CharteForge
               </button>
@@ -352,10 +352,10 @@ function StudioShell() {
     <>
       <SeoHead routeKey={activeTab} />
       <SplashScreen />
-      <div className="min-h-screen bg-[#F8F9FB] text-slate-900 flex flex-col">
+      <div className="min-h-screen bg-surface text-text-primary flex flex-col">
         {/* 3-Zone Top Bar Contract */}
-        <header className="border-b border-slate-200 bg-white">
-          <div className="mx-auto flex max-w-[1320px] items-center justify-between gap-8 px-6 py-3.5">
+        <header className="sticky top-0 z-40 border-b border-border-hairline/70 bg-surface/90 backdrop-blur-xl">
+          <div className="mx-auto flex h-16 max-w-[1200px] items-center justify-between gap-6 px-6">
             <a
               href="/"
               onClick={(e) => {
@@ -363,35 +363,47 @@ function StudioShell() {
                 setActiveTab(isAuthenticated ? 'studio' : 'landing');
               }}
               className="whitespace-nowrap shrink-0"
+              aria-label="Accueil CharteForge"
             >
               <BrandLogo />
             </a>
 
-            <nav className="hidden md:flex items-center gap-6 text-sm font-medium text-slate-600">
+            <nav
+              className="hidden md:flex items-center gap-7 text-sm font-medium text-text-secondary"
+              aria-label="Navigation principale"
+            >
               {(
                 !isAuthenticated
                   ? [
-                      { id: 'landing' as const, label: 'Accueil' },
-                      { id: 'billing' as const, label: 'Tarifs' },
+                      { id: 'landing' as const, label: 'L’atelier', hash: '#atelier' },
+                      { id: 'landing' as const, label: 'La méthode', hash: '#methode' },
+                      { id: 'billing' as const, label: 'Les exports', hash: undefined },
                     ]
                   : [
-                      { id: 'landing' as const, label: 'Accueil' },
-                      { id: 'studio' as const, label: 'Studio' },
-                      { id: 'dashboard' as const, label: 'Tableau de bord' },
-                      { id: 'billing' as const, label: 'Tarifs' },
+                      { id: 'landing' as const, label: 'Accueil', hash: undefined },
+                      { id: 'studio' as const, label: 'Studio', hash: undefined },
+                      { id: 'dashboard' as const, label: 'Tableau de bord', hash: undefined },
+                      { id: 'billing' as const, label: 'Tarifs', hash: undefined },
                       ...(profile?.role === 'admin'
-                        ? [{ id: 'admin' as const, label: 'Administration' }]
+                        ? [{ id: 'admin' as const, label: 'Admin', hash: undefined }]
                         : []),
                     ]
               ).map((item) => {
-                const isActive = activeTab === item.id;
+                const isActive = activeTab === item.id && !item.hash;
                 return (
                   <button
-                    key={item.id}
+                    key={`${item.id}-${item.label}`}
                     type="button"
-                    onClick={() => setActiveTab(item.id)}
-                    className={`relative py-1 transition-colors hover:text-slate-900 whitespace-nowrap shrink-0 ${
-                      isActive ? 'text-slate-900 font-semibold' : ''
+                    onClick={() => {
+                      setActiveTab(item.id);
+                      if (item.hash) {
+                        window.setTimeout(() => {
+                          document.querySelector(item.hash!)?.scrollIntoView({ behavior: 'smooth' });
+                        }, 80);
+                      }
+                    }}
+                    className={`relative py-1 transition-colors hover:text-text-primary whitespace-nowrap shrink-0 ${
+                      isActive ? 'text-text-primary font-semibold' : ''
                     }`}
                   >
                     {item.label}
@@ -399,7 +411,7 @@ function StudioShell() {
                       <motion.span
                         layoutId="top-nav-underline"
                         transition={{ type: 'spring', stiffness: 420, damping: 34 }}
-                        className="absolute inset-x-0 -bottom-0.5 h-0.5 rounded-full bg-slate-900"
+                        className="absolute inset-x-0 -bottom-0.5 h-0.5 rounded-full bg-violet"
                       />
                     )}
                   </button>
@@ -407,43 +419,43 @@ function StudioShell() {
               })}
             </nav>
 
-            <div className="flex items-center gap-3 shrink-0">
+            <div className="flex items-center gap-2.5 shrink-0">
               {isAuthenticated ? (
-                <div className="flex items-center gap-3">
-                  <span className="hidden sm:inline text-xs text-slate-600 whitespace-nowrap">
+                <div className="flex items-center gap-2.5">
+                  <span className="hidden sm:inline text-xs text-text-secondary whitespace-nowrap">
                     {profile?.email}
                   </span>
                   <button
                     type="button"
                     onClick={() => void handleLogout()}
                     title="Déconnexion"
-                    className="rounded-lg border border-slate-200 p-2 text-slate-600 hover:bg-slate-50"
+                    className="rounded-full border border-border-hairline p-2.5 text-text-secondary hover:bg-surface-subtle min-h-11 min-w-11 inline-flex items-center justify-center"
                   >
                     <LogOut className="h-3.5 w-3.5" />
                   </button>
                   <button
                     type="button"
                     onClick={handleCreateNew}
-                    className="rounded-lg bg-slate-900 px-4 py-2 text-xs font-medium text-white hover:bg-slate-800 whitespace-nowrap shrink-0"
+                    className="inline-flex min-h-11 items-center rounded-full bg-ink px-4 py-2 text-xs font-semibold text-on-primary hover:bg-[#2a2a42] whitespace-nowrap shrink-0"
                   >
                     Nouvelle charte
                   </button>
                 </div>
               ) : (
-                <div className="flex items-center gap-2.5">
-                  <button
-                    type="button"
-                    onClick={() => setActiveTab('billing')}
-                    className="md:hidden rounded-lg border border-slate-200 px-3 py-2 text-xs font-medium text-slate-700 whitespace-nowrap shrink-0"
-                  >
-                    Tarifs
-                  </button>
+                <div className="flex items-center gap-2">
                   <button
                     type="button"
                     onClick={() => openAuth('login')}
-                    className="rounded-lg bg-slate-900 px-4 py-2 text-xs font-medium text-white hover:bg-slate-800 whitespace-nowrap shrink-0"
+                    className="hidden rounded-full px-3 py-2 text-xs font-semibold text-text-secondary transition-colors hover:text-text-primary sm:inline-flex whitespace-nowrap shrink-0"
                   >
                     Connexion
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => openAuth('register')}
+                    className="inline-flex min-h-11 items-center rounded-full bg-ink px-4 py-2.5 text-xs font-semibold text-on-primary shadow-sm transition-all hover:bg-[#2a2a42] whitespace-nowrap shrink-0"
+                  >
+                    Créer ma charte
                   </button>
                 </div>
               )}
@@ -451,7 +463,13 @@ function StudioShell() {
           </div>
         </header>
 
-        <main className="mx-auto w-full max-w-[1320px] flex-1 px-6 py-8">
+        <main
+          className={`mx-auto w-full flex-1 ${
+            activeTab === 'landing'
+              ? 'max-w-none px-0 py-0'
+              : 'max-w-[1200px] px-6 py-8'
+          }`}
+        >
           <AnimatePresence mode="wait">
             {activeTab === 'landing' && (
               <motion.div
@@ -516,7 +534,7 @@ function StudioShell() {
                 className="space-y-6"
               >
                 {/* Wizard Stepper + Save Status */}
-                <div className="flex flex-wrap items-center justify-between gap-4 rounded-lg border border-slate-200 bg-white px-4 py-3">
+                <div className="flex flex-wrap items-center justify-between gap-4 rounded-full border border-border-hairline bg-surface-canvas px-4 py-3">
                   <div className="flex flex-wrap items-center gap-1">
                     {WIZARD_STEPS.map((s) => (
                       <button
@@ -526,14 +544,14 @@ function StudioShell() {
                         className={`relative rounded-md px-3 py-1.5 text-xs font-medium transition-colors whitespace-nowrap shrink-0 ${
                           step === s.num
                             ? 'text-white'
-                            : 'text-slate-600 hover:bg-slate-100 hover:text-slate-900'
+                            : 'text-text-secondary hover:bg-surface-muted hover:text-text-primary'
                         }`}
                       >
                         {step === s.num && (
                           <motion.span
                             layoutId="wizard-step-pill"
                             transition={{ type: 'spring', stiffness: 420, damping: 34 }}
-                            className="absolute inset-0 rounded-md bg-slate-900"
+                            className="absolute inset-0 rounded-full bg-violet"
                           />
                         )}
                         <span className="relative z-10">
@@ -545,7 +563,7 @@ function StudioShell() {
                   </div>
 
                   <div className="flex items-center gap-3">
-                    <span className="text-xs text-slate-500 whitespace-nowrap">
+                    <span className="text-xs text-text-muted whitespace-nowrap">
                       {saveState === 'saving'
                         ? 'Enregistrement…'
                         : saveState === 'saved'
@@ -555,7 +573,7 @@ function StudioShell() {
                     <button
                       type="button"
                       onClick={() => void persistBrandToServer(brand, false)}
-                      className="inline-flex items-center gap-1.5 rounded-lg border border-slate-200 bg-white px-3 py-1.5 text-xs font-medium text-slate-800 hover:bg-slate-50 whitespace-nowrap shrink-0"
+                      className="inline-flex items-center gap-1.5 rounded-full border border-border-hairline bg-surface-canvas px-3 py-1.5 text-xs font-medium text-text-primary hover:bg-surface-subtle whitespace-nowrap shrink-0"
                     >
                       <Save className="h-3.5 w-3.5" />
                       Enregistrer
@@ -564,7 +582,7 @@ function StudioShell() {
                 </div>
 
                 {saveError && (
-                  <div className="flex items-center justify-between rounded-lg border border-amber-200 bg-amber-50 px-4 py-3 text-xs text-amber-900">
+                  <div className="flex items-center justify-between rounded-full border border-wcag-warning/40 bg-wcag-warning-subtle px-4 py-3 text-xs text-wcag-warning">
                     <span>{saveError}</span>
                     <button
                       type="button"
@@ -609,12 +627,12 @@ function StudioShell() {
                 </AnimatePresence>
 
                 {/* Bottom Step Navigation */}
-                <div className="flex items-center justify-between border-t border-slate-200 pt-5">
+                <div className="flex items-center justify-between border-t border-border-hairline pt-5">
                   <button
                     type="button"
                     disabled={step === 1}
                     onClick={() => goToStep(step - 1)}
-                    className="inline-flex items-center gap-1.5 rounded-lg border border-slate-200 bg-white px-4 py-2 text-xs font-medium text-slate-700 hover:bg-slate-50 disabled:opacity-40"
+                    className="inline-flex items-center gap-1.5 rounded-full border border-border-hairline bg-surface-canvas px-4 py-2 text-xs font-medium text-text-secondary hover:bg-surface-subtle disabled:opacity-40"
                   >
                     <ChevronLeft className="h-4 w-4" />
                     Étape précédente
@@ -623,7 +641,7 @@ function StudioShell() {
                     <button
                       type="button"
                       onClick={() => goToStep(step + 1)}
-                      className="inline-flex items-center gap-1.5 rounded-lg bg-slate-900 px-4 py-2 text-xs font-medium text-white hover:bg-slate-800"
+                      className="inline-flex items-center gap-1.5 rounded-full bg-violet px-4 py-2 text-xs font-medium text-white hover:bg-ink"
                     >
                       Étape suivante
                       <ChevronRight className="h-4 w-4" />
@@ -664,13 +682,11 @@ function StudioShell() {
           </AnimatePresence>
         </main>
 
-        <footer className="border-t border-slate-200 bg-white">
-          <div className="mx-auto flex max-w-[1320px] flex-wrap items-center justify-between gap-4 px-6 py-4 text-xs text-slate-500">
-            <span>
-              CharteForge · Génération automatisée de chartes graphiques PDF & Design Tokens
-            </span>
+        <footer className="border-t border-border-hairline bg-surface-canvas">
+          <div className="mx-auto flex max-w-[1200px] flex-wrap items-center justify-between gap-4 px-6 py-5 text-xs text-text-muted">
+            <span>© 2026 CharteForge · Studio de marque propulsé par l’IA</span>
             <div className="flex items-center gap-4">
-              <a href="/demo-charte-aurelia.pdf" download className="hover:text-slate-900">
+              <a href="/demo-charte-aurelia.pdf" download className="hover:text-text-primary">
                 Exemple PDF (Aurelia Atelier)
               </a>
               <a
@@ -679,7 +695,7 @@ function StudioShell() {
                   e.preventDefault();
                   setActiveTab('landing');
                 }}
-                className="hover:text-slate-900"
+                className="hover:text-text-primary"
               >
                 Accueil
               </a>
@@ -689,11 +705,11 @@ function StudioShell() {
                   e.preventDefault();
                   setActiveTab('billing');
                 }}
-                className="hover:text-slate-900"
+                className="hover:text-text-primary"
               >
                 Tarifs
               </a>
-              <a href="/llms.txt" className="hover:text-slate-900">
+              <a href="/llms.txt" className="hover:text-text-primary">
                 LLMs.txt
               </a>
             </div>

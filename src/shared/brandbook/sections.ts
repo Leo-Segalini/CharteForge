@@ -175,21 +175,12 @@ export const ALL_SECTIONS: SectionDefinition[] = [
   },
 ];
 
-export const GOOGLE_FONTS_CATALOG = [
-  { family: 'Plus Jakarta Sans', category: 'Géométrique Moderne', weights: ['400', '500', '600', '700'] },
-  { family: 'Outfit', category: 'Sans Contemporaine', weights: ['400', '500', '600', '700'] },
-  { family: 'Bricolage Grotesque', category: 'Expressive & Caractère', weights: ['400', '500', '600', '700'] },
-  { family: 'Manrope', category: 'Néo-Grotesque Équilibrée', weights: ['400', '500', '600', '700'] },
-  { family: 'DM Sans', category: 'Interface Claire', weights: ['400', '500', '700'] },
-  { family: 'Public Sans', category: 'Corps Éditorial', weights: ['400', '500', '600', '700'] },
-  { family: 'Fraunces', category: 'Serif Éditoriale', weights: ['400', '600', '700'] },
-  { family: 'Playfair Display', category: 'Serif Prestige', weights: ['400', '600', '700'] },
-  { family: 'Cormorant Garamond', category: 'Luxe & Culture', weights: ['400', '600', '700'] },
-  { family: 'Lora', category: 'Lecture Longue', weights: ['400', '500', '600', '700'] },
-  { family: 'Source Serif 4', category: 'Presse & Rapport', weights: ['400', '600', '700'] },
-  { family: 'JetBrains Mono', category: 'Technique & Données', weights: ['400', '500', '600'] },
-  { family: 'IBM Plex Mono', category: 'Tabulaire & Code', weights: ['400', '500', '600'] },
-];
+export {
+  GOOGLE_FONTS_CATALOG,
+  searchGoogleFonts,
+  guessFallback,
+} from '../googleFontsCatalog.ts';
+export type { GoogleFontEntry, GoogleFontCategory } from '../googleFontsCatalog.ts';
 
 export function buildTypeScalePreset(preset: TypeScalePreset): TypeScaleConfig {
   if (preset === 'compact') {

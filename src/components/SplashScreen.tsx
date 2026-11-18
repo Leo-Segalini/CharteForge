@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import { AnimatePresence, motion } from 'motion/react';
+import { AnimatePresence, motion, useReducedMotion } from 'motion/react';
+import { Sparkles } from 'lucide-react';
+import { BrandLogo } from './BrandLogo.tsx';
 
 const EASE_OUT = [0.22, 1, 0.36, 1] as const;
 
 export function SplashScreen() {
+  const reduceMotion = useReducedMotion();
   const [visible, setVisible] = useState<boolean>(() => {
     try {
       if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
@@ -19,18 +22,18 @@ export function SplashScreen() {
     }
   });
 
-  const [phaseLabel, setPhaseLabel] = useState('Initialisation de l’atelier');
+  const [phaseLabel, setPhaseLabel] = useState('Préparation de votre atelier…');
 
   useEffect(() => {
     if (!visible) return;
 
     const phaseTimer = window.setTimeout(() => {
-      setPhaseLabel('Moteur typographique & PDF prêt');
-    }, 950);
+      setPhaseLabel('Identité, typo & tokens prêts');
+    }, 900);
 
     const hideTimer = window.setTimeout(() => {
       setVisible(false);
-    }, 1850);
+    }, 1800);
 
     return () => {
       window.clearTimeout(phaseTimer);
@@ -48,151 +51,109 @@ export function SplashScreen() {
           initial={{ opacity: 1 }}
           exit={{
             opacity: 0,
-            y: -18,
-            transition: { duration: 0.45, ease: EASE_OUT },
+            y: reduceMotion ? 0 : -12,
+            transition: { duration: 0.4, ease: EASE_OUT },
           }}
-          className="fixed inset-0 z-50 flex flex-col items-center justify-center overflow-hidden bg-[#0F172A] text-white"
+          className="fixed inset-0 z-50 flex flex-col items-center justify-center overflow-hidden bg-surface text-text-primary"
         >
-          {/* Subtle architectural blueprint hairlines */}
+          {/* Soft ambient blobs — même esprit que le CTA landing */}
           <motion.div
-            aria-hidden="true"
-            initial={{ scaleX: 0, opacity: 0 }}
-            animate={{ scaleX: 1, opacity: 0.14 }}
-            transition={{ duration: 0.85, ease: EASE_OUT }}
-            className="pointer-events-none absolute inset-x-0 top-1/2 h-px origin-center bg-slate-300"
+            aria-hidden
+            initial={{ opacity: 0, scale: 0.85 }}
+            animate={{ opacity: 0.55, scale: 1 }}
+            transition={{ duration: 1, ease: EASE_OUT }}
+            className="pointer-events-none absolute -left-24 top-16 h-72 w-72 rounded-full bg-violet/15 blur-3xl"
           />
           <motion.div
-            aria-hidden="true"
-            initial={{ scaleY: 0, opacity: 0 }}
-            animate={{ scaleY: 1, opacity: 0.14 }}
-            transition={{ duration: 0.85, ease: EASE_OUT }}
-            className="pointer-events-none absolute inset-y-0 left-1/2 w-px origin-center bg-slate-300"
+            aria-hidden
+            initial={{ opacity: 0, scale: 0.85 }}
+            animate={{ opacity: 0.4, scale: 1 }}
+            transition={{ duration: 1.1, delay: 0.1, ease: EASE_OUT }}
+            className="pointer-events-none absolute -right-16 bottom-20 h-80 w-80 rounded-full bg-coral/15 blur-3xl"
           />
-
-          {/* Subtle radial focal glow behind emblem */}
           <motion.div
-            aria-hidden="true"
-            initial={{ scale: 0.6, opacity: 0 }}
-            animate={{ scale: 1, opacity: 0.22 }}
-            transition={{ duration: 1.1, ease: EASE_OUT }}
-            className="pointer-events-none absolute h-72 w-72 rounded-full bg-[#C97B36] blur-3xl"
+            aria-hidden
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 0.35 }}
+            transition={{ duration: 1.2, ease: EASE_OUT }}
+            className="pointer-events-none absolute left-1/2 top-1/3 h-64 w-64 -translate-x-1/2 rounded-full bg-gold/20 blur-3xl"
           />
 
-          <div className="relative z-10 flex flex-col items-center px-6 text-center">
-            {/* Animated precision vector emblem */}
+          <div className="relative z-10 flex max-w-sm flex-col items-center px-6 text-center">
             <motion.div
-              initial={{ scale: 0.86, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              transition={{ duration: 0.55, ease: EASE_OUT }}
-              className="mb-5"
+              initial={reduceMotion ? false : { opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.45, ease: EASE_OUT }}
+              className="mb-6 inline-flex items-center gap-2 rounded-full bg-violet-soft px-3 py-1.5 text-[13px] font-semibold text-violet"
             >
-              <svg
-                width="64"
-                height="64"
-                viewBox="0 0 36 36"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-                aria-hidden="true"
-              >
-                <motion.rect
-                  x="2"
-                  y="2"
-                  width="32"
-                  height="32"
-                  rx="7"
-                  fill="#1E293B"
-                  stroke="#334155"
-                  strokeWidth="1"
-                  initial={{ pathLength: 0, opacity: 0 }}
-                  animate={{ pathLength: 1, opacity: 1 }}
-                  transition={{ duration: 0.6, ease: EASE_OUT }}
-                />
-                <motion.line
-                  x1="14"
-                  y1="7"
-                  x2="14"
-                  y2="29"
-                  stroke="rgba(255,255,255,0.28)"
-                  strokeWidth="1"
-                  initial={{ pathLength: 0 }}
-                  animate={{ pathLength: 1 }}
-                  transition={{ duration: 0.5, delay: 0.2, ease: EASE_OUT }}
-                />
-                <motion.line
-                  x1="7"
-                  y1="22"
-                  x2="29"
-                  y2="22"
-                  stroke="rgba(255,255,255,0.28)"
-                  strokeWidth="1"
-                  initial={{ pathLength: 0 }}
-                  animate={{ pathLength: 1 }}
-                  transition={{ duration: 0.5, delay: 0.25, ease: EASE_OUT }}
-                />
-                <motion.path
-                  d="M24 11H13C11.3431 11 10 12.3431 10 14V22C10 23.6569 11.3431 25 13 25H24"
-                  stroke="#FFFFFF"
-                  strokeWidth="2.6"
-                  strokeLinecap="square"
-                  initial={{ pathLength: 0 }}
-                  animate={{ pathLength: 1 }}
-                  transition={{ duration: 0.75, delay: 0.2, ease: EASE_OUT }}
-                />
-                <motion.rect
-                  x="21.5"
-                  y="16"
-                  width="5"
-                  height="5"
-                  rx="1.2"
-                  fill="#C97B36"
-                  initial={{ scale: 0, opacity: 0 }}
-                  animate={{ scale: 1, opacity: 1 }}
-                  transition={{
-                    type: 'spring',
-                    stiffness: 380,
-                    damping: 22,
-                    delay: 0.65,
-                  }}
-                />
-              </svg>
+              <Sparkles className="h-3.5 w-3.5" aria-hidden />
+              Studio de marque propulsé par l’IA
             </motion.div>
 
-            {/* Staggered Wordmark & Baseline */}
             <motion.div
-              initial={{ opacity: 0, y: 12 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.55, delay: 0.35, ease: EASE_OUT }}
-              className="text-3xl font-bold tracking-tight text-white"
-              style={{ fontFamily: 'var(--font-display)' }}
+              initial={reduceMotion ? false : { opacity: 0, scale: 0.92 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.55, delay: 0.08, ease: EASE_OUT }}
+              className="mb-5 rounded-[1.75rem] border border-border-hairline bg-surface-canvas p-6 shadow-micro"
             >
-              CharteForge
+              <img
+                src="/logo-mark.png"
+                alt=""
+                width={120}
+                height={52}
+                className="mx-auto h-12 w-auto object-contain"
+                decoding="async"
+              />
+            </motion.div>
+
+            <motion.div
+              initial={reduceMotion ? false : { opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.18, ease: EASE_OUT }}
+            >
+              <BrandLogo size="lg" />
             </motion.div>
 
             <motion.p
-              initial={{ opacity: 0, y: 8 }}
+              initial={reduceMotion ? false : { opacity: 0, y: 8 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.5, ease: EASE_OUT }}
-              className="mt-2 text-xs font-medium tracking-wide text-slate-300"
+              transition={{ duration: 0.45, delay: 0.28, ease: EASE_OUT }}
+              className="mt-3 max-w-[28ch] text-[15px] leading-relaxed text-text-secondary"
             >
-              Identités visuelles, chartes graphiques PDF & Design Systems
+              Une identité qui vous ressemble,{' '}
+              <span className="relative inline-block font-semibold text-violet">
+                enfin.
+                <svg
+                  className="absolute -bottom-1 left-0 w-full"
+                  viewBox="0 0 80 8"
+                  fill="none"
+                  aria-hidden
+                >
+                  <path
+                    d="M2 5c18-4 36 2 52-1 10-2 18-2 24 0"
+                    stroke="#FF7A59"
+                    strokeWidth="2.5"
+                    strokeLinecap="round"
+                  />
+                </svg>
+              </span>
             </motion.p>
 
-            {/* Progress Hairline */}
-            <div className="mt-7 w-52 space-y-2">
-              <div className="h-0.5 w-full overflow-hidden rounded-full bg-slate-800">
+            <div className="mt-8 w-56 space-y-2.5">
+              <div className="h-1.5 w-full overflow-hidden rounded-full bg-surface-muted">
                 <motion.div
                   initial={{ scaleX: 0 }}
                   animate={{ scaleX: 1 }}
-                  transition={{ duration: 1.55, delay: 0.15, ease: EASE_OUT }}
-                  className="h-full w-full origin-left bg-[#C97B36]"
+                  transition={{ duration: 1.45, delay: 0.12, ease: EASE_OUT }}
+                  className="h-full w-full origin-left rounded-full bg-gradient-to-r from-violet via-[#7B72F8] to-coral"
                 />
               </div>
               <motion.div
                 key={phaseLabel}
-                initial={{ opacity: 0, y: 4 }}
+                initial={reduceMotion ? false : { opacity: 0, y: 4 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.25 }}
-                className="font-mono text-[10px] tracking-wider text-slate-400"
+                className="text-xs font-medium text-text-muted"
               >
                 {phaseLabel}
               </motion.div>
@@ -200,11 +161,11 @@ export function SplashScreen() {
 
             <motion.button
               type="button"
-              initial={{ opacity: 0 }}
+              initial={reduceMotion ? false : { opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ delay: 0.45 }}
+              transition={{ delay: 0.4 }}
               onClick={() => setVisible(false)}
-              className="mt-7 rounded-md px-3 py-1 text-[11px] font-medium text-slate-400 transition-colors hover:bg-white/5 hover:text-white"
+              className="mt-7 min-h-11 rounded-full px-4 py-2 text-xs font-semibold text-text-secondary transition-colors hover:bg-surface-muted hover:text-text-primary"
             >
               Passer l’introduction
             </motion.button>

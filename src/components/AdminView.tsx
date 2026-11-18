@@ -69,7 +69,7 @@ export function AdminView() {
 
   if (error) {
     return (
-      <div className="rounded-lg border border-red-200 bg-red-50 p-6 text-sm text-red-800">
+      <div className="rounded-full border border-red-200 bg-red-50 p-6 text-sm text-red-800">
         {error}
       </div>
     );
@@ -77,48 +77,48 @@ export function AdminView() {
 
   if (!data) {
     return (
-      <div className="h-48 animate-pulse rounded-lg border border-slate-200 bg-white" />
+      <div className="h-48 animate-pulse rounded-full border border-border-hairline bg-surface-canvas" />
     );
   }
 
   return (
     <div className="space-y-8">
-      <div className="border-b border-slate-200 pb-5">
-        <h2 className="text-xl font-semibold text-slate-900">
+      <div className="border-b border-border-hairline pb-5">
+        <h2 className="text-xl font-semibold text-text-primary">
           Console d’administration
         </h2>
-        <p className="mt-1 text-sm text-slate-600">
+        <p className="mt-1 text-sm text-text-secondary">
           Statistiques globales de génération, gestion des modèles et liste des comptes inscrits.
         </p>
       </div>
 
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
-        <div className="rounded-lg border border-slate-200 bg-white p-5">
-          <div className="text-xs font-medium text-slate-500">Utilisateurs inscrits</div>
-          <div className="mt-2 font-mono text-2xl font-bold text-slate-900 tabular-nums">
+        <div className="rounded-full border border-border-hairline bg-surface-canvas p-5">
+          <div className="text-xs font-medium text-text-muted">Utilisateurs inscrits</div>
+          <div className="mt-2 font-mono text-2xl font-bold text-text-primary tabular-nums">
             {data.stats.totalUsers}
           </div>
         </div>
-        <div className="rounded-lg border border-slate-200 bg-white p-5">
-          <div className="text-xs font-medium text-slate-500">Chartes créées</div>
-          <div className="mt-2 font-mono text-2xl font-bold text-slate-900 tabular-nums">
+        <div className="rounded-full border border-border-hairline bg-surface-canvas p-5">
+          <div className="text-xs font-medium text-text-muted">Chartes créées</div>
+          <div className="mt-2 font-mono text-2xl font-bold text-text-primary tabular-nums">
             {data.stats.totalBrands}
           </div>
         </div>
-        <div className="rounded-lg border border-slate-200 bg-white p-5">
-          <div className="text-xs font-medium text-slate-500">Éditions finalisées</div>
-          <div className="mt-2 font-mono text-2xl font-bold text-slate-900 tabular-nums">
+        <div className="rounded-full border border-border-hairline bg-surface-canvas p-5">
+          <div className="text-xs font-medium text-text-muted">Éditions finalisées</div>
+          <div className="mt-2 font-mono text-2xl font-bold text-text-primary tabular-nums">
             {data.stats.generatedGuidelines}
           </div>
         </div>
       </div>
 
-      <div className="rounded-lg border border-slate-200 bg-white p-5">
+      <div className="rounded-full border border-border-hairline bg-surface-canvas p-5">
         <div className="flex items-center justify-between">
-          <h3 className="text-sm font-semibold text-slate-900">
+          <h3 className="text-sm font-semibold text-text-primary">
             Modèles de mise en page activés
           </h3>
-          {saving && <span className="text-xs text-slate-500">Enregistrement…</span>}
+          {saving && <span className="text-xs text-text-muted">Enregistrement…</span>}
         </div>
         <div className="mt-3 flex flex-wrap gap-3">
           {['classic', 'editorial', 'minimal'].map((tpl) => {
@@ -128,10 +128,10 @@ export function AdminView() {
                 key={tpl}
                 type="button"
                 onClick={() => void toggleTemplate(tpl)}
-                className={`rounded-lg border px-4 py-2 text-xs font-medium capitalize ${
+                className={`rounded-full border px-4 py-2 text-xs font-medium capitalize ${
                   active
-                    ? 'border-slate-900 bg-slate-900 text-white'
-                    : 'border-slate-200 bg-white text-slate-600'
+                    ? 'border-violet bg-violet text-white'
+                    : 'border-border-hairline bg-surface-canvas text-text-secondary'
                 }`}
               >
                 {tpl}
@@ -141,9 +141,9 @@ export function AdminView() {
         </div>
       </div>
 
-      <div className="overflow-x-auto rounded-lg border border-slate-200 bg-white">
+      <div className="overflow-x-auto rounded-full border border-border-hairline bg-surface-canvas">
         <table className="w-full text-left text-sm">
-          <thead className="border-b border-slate-200 bg-slate-50 text-xs text-slate-500">
+          <thead className="border-b border-border-hairline bg-surface-subtle text-xs text-text-muted">
             <tr>
               <th className="px-4 py-3 font-medium">E-mail</th>
               <th className="px-4 py-3 font-medium">Rôle</th>
@@ -151,13 +151,13 @@ export function AdminView() {
               <th className="px-4 py-3 font-medium">Inscription</th>
             </tr>
           </thead>
-          <tbody className="divide-y divide-slate-100">
+          <tbody className="divide-y divide-border-subtle">
             {data.users.map((u) => (
               <tr key={u.id}>
-                <td className="px-4 py-3 font-medium text-slate-900">{u.email}</td>
-                <td className="px-4 py-3 text-xs text-slate-600">{u.role}</td>
-                <td className="px-4 py-3 font-mono text-xs text-slate-700">{u.plan}</td>
-                <td className="px-4 py-3 font-mono text-xs text-slate-500 tabular-nums">
+                <td className="px-4 py-3 font-medium text-text-primary">{u.email}</td>
+                <td className="px-4 py-3 text-xs text-text-secondary">{u.role}</td>
+                <td className="px-4 py-3 font-mono text-xs text-text-secondary">{u.plan}</td>
+                <td className="px-4 py-3 font-mono text-xs text-text-muted tabular-nums">
                   {new Date(u.createdAt).toLocaleDateString('fr-FR')}
                 </td>
               </tr>

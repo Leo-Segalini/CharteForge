@@ -2,7 +2,7 @@ import crypto from 'crypto';
 import fs from 'fs';
 import path from 'path';
 import express, { type Request } from 'express';
-import cors from 'dotenv/config';
+import 'dotenv/config';
 import rateLimit from 'express-rate-limit';
 import multer from 'multer';
 import { createServer as createViteServer } from 'vite';
@@ -53,11 +53,10 @@ import {
 } from './src/shared/seoConfig.ts';
 import type { BrandBookData, FontRole, LogoVariantType, SectionId } from './src/shared/types.ts';
 
-void cors;
 
 const app = express();
 app.set('trust proxy', 1);
-const PORT = 3000;
+const PORT = Number(process.env.PORT) || 3000;
 
 app.use(express.json({ limit: '15mb' }));
 

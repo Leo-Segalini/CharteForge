@@ -58,12 +58,12 @@ export function SharedViewer({
 
   if (error) {
     return (
-      <div className="mx-auto max-w-lg rounded-lg border border-red-200 bg-white p-8 text-center">
+      <div className="mx-auto max-w-lg rounded-full border border-red-200 bg-surface-canvas p-8 text-center">
         <p className="text-sm font-medium text-red-700">{error}</p>
         <button
           type="button"
           onClick={onExit}
-          className="mt-4 rounded-lg bg-slate-900 px-4 py-2 text-xs font-medium text-white"
+          className="mt-4 rounded-full bg-violet px-4 py-2 text-xs font-medium text-white"
         >
           Retour à CharteForge
         </button>
@@ -74,8 +74,8 @@ export function SharedViewer({
   if (!brand || !rendered) {
     return (
       <div className="mx-auto max-w-4xl space-y-4">
-        <div className="h-16 animate-pulse rounded-lg bg-white" />
-        <div className="h-96 animate-pulse rounded-lg bg-white" />
+        <div className="h-16 animate-pulse rounded-2xl bg-surface-canvas" />
+        <div className="h-96 animate-pulse rounded-2xl bg-surface-canvas" />
       </div>
     );
   }
@@ -87,10 +87,10 @@ export function SharedViewer({
 
   return (
     <div className="space-y-6">
-      <div className="flex flex-wrap items-center justify-between gap-4 border-b border-slate-200 pb-4">
+      <div className="flex flex-wrap items-center justify-between gap-4 border-b border-border-hairline pb-4">
         <div>
-          <h1 className="text-xl font-semibold text-slate-900">{brand.name}</h1>
-          <p className="text-xs text-slate-500">
+          <h1 className="text-xl font-semibold text-text-primary">{brand.name}</h1>
+          <p className="text-xs text-text-muted">
             Charte graphique partagée · Version {brand.guideline.version}.0
           </p>
         </div>
@@ -99,7 +99,7 @@ export function SharedViewer({
             type="button"
             disabled={downloading}
             onClick={() => void handleDownloadPdf()}
-            className="inline-flex items-center gap-1.5 rounded-lg bg-slate-900 px-4 py-2 text-xs font-medium text-white hover:bg-slate-800"
+            className="inline-flex items-center gap-1.5 rounded-full bg-violet px-4 py-2 text-xs font-medium text-white hover:bg-ink"
           >
             <Download className="h-3.5 w-3.5" />
             {downloading ? 'Génération…' : 'Télécharger le PDF'}
@@ -107,7 +107,7 @@ export function SharedViewer({
           <button
             type="button"
             onClick={onExit}
-            className="rounded-lg border border-slate-200 bg-white px-4 py-2 text-xs font-medium text-slate-700"
+            className="rounded-full border border-border-hairline bg-surface-canvas px-4 py-2 text-xs font-medium text-text-secondary"
           >
             Ouvrir l’éditeur
           </button>
@@ -120,7 +120,7 @@ export function SharedViewer({
           return (
             <div
               key={p.id}
-              className="overflow-hidden rounded border border-slate-300 bg-white shadow-sm"
+              className="overflow-hidden rounded border border-border-hairline bg-surface-canvas shadow-sm"
               style={{
                 width: `${Math.round(rawW * scale)}px`,
                 height: `${Math.round(rawH * scale)}px`,
